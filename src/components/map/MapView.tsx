@@ -1,0 +1,242 @@
+import type * as GeoJSON from "geojson";
+import { useEffect, useRef } from "react";
+import * as maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+// Worker is served from /public so it loads as a plain module worker (dev + prod).
+maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
+import { REGIONS, type RegionId } from "@/data/generators/regions";
+import {
+  centroidsGeo,
+  drainageGeo,
+  facilitiesGeo,
+  sarChangeGeo,
+  sectorsGeo,
+  terrainGeo,
+} from "@/data/generators/layers";
+import type { NisarImage } from "@/lib/nisar";
+import type { SectorScore } from "@/lib/scoring";
+import { LAYER_KEYS, type LayerKey, type LayerState } from "./layers";
+
+export const BASEMAPS = {
+  dark: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  light: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+};
+
+// Colorblind-safe ramps (literal colors are required by the GL paint spec).
+const RISK_RAMP = ["interpolate", ["linear"], ["get", "risk"], 0, "#9a9a9a", 40, "#9a9a9a", 55, "#e9a23b", 72, "#d7263d", 86, "#7b2cbf"];
+const DENSITY_RAMP = ["interpolate", ["linear"], ["get", "density"], 0, "#141414", 20000, "#2e2e2e", 60000, "#555555", 100000, "#8a8a8a", 160000, "#d9d9d9"];
+const ELEV_RAMP = (region: RegionId) =>
+  region === "gaza"
+    ? ["interpolate", ["linear"], ["get", "elev"], 0, "#e8e8e8", 12, "#b0b0b0", 25, "#7a7a7a", 38, "#4a4a4a", 50, "#1c1c1c"]
+    : ["interpolate", ["linear"], ["get", "elev"], 200, "#e8e8e8", 250, "#b0b0b0", 300, "#7a7a7a", 350, "#4a4a4a", 400, "#1c1c1c"];
+
+interface Props {
+  region: RegionId;
+  scores: SectorScore[];
+  layers: Record<LayerKey, LayerState>;
+  pass: number;
+  nisar?: NisarImage | null | undefined;
+  basemap?: keyof typeof BASEMAPS | undefined;
+  interactive?: boolean | undefined;
+  selectedId?: string | null | undefined;
+  onSelect?: ((id: string | null) => void) | undefined;
+  onPointer?: ((lngLat: { lng: number; lat: number }) => void) | undefined;
+  flyTo?: [number, number] | null | undefined;
+  syncWith?: React.MutableRefObject<maplibregl.Map | null> | undefined;
+  mapRef?: React.MutableRefObject<maplibregl.Map | null> | undefined;
+}
+
+function syncNisar(map: maplibregl.Map, nisar: NisarImage | null | undefined) {
+  if (!nisar) {
+    if (map.getLayer("nisar-raster")) map.removeLayer("nisar-raster");
+    if (map.getSource("nisar")) map.removeSource("nisar");
+    return;
+  }
+  if (!map.getSource("nisar")) {
+    map.addSource("nisar", { type: "image", coordinates: nisar.corners });
+  }
+  (map.getSource("nisar") as maplibregl.ImageSource).updateImage({ image: nisar.image, coordinates: nisar.corners });
+  if (!map.getLayer("nisar-raster")) {
+    map.addLayer({ id: "nisar-raster", type: "raster", source: "nisar", paint: { "raster-fade-duration": 0 } }, "sectors-line");
+  }
+}
+
+function install(map: maplibregl.Map, p: Props) {
+  const { region, scores, pass } = p;
+  const add = (id: string, data: GeoJSON.FeatureCollection) => {
+    const src = map.getSource(id) as maplibregl.GeoJSONSource | undefined;
+    if (src) src.setData(data);
+    else map.addSource(id, { type: "geojson", data });
+  };
+  add("terrain", terrainGeo(region));
+  add("sectors", sectorsGeo(region, scores));
+  add("centroids", centroidsGeo(region, scores));
+  add("sar", sarChangeGeo(region, pass));
+  add("drainage", drainageGeo(region));
+  add("facilities", facilitiesGeo(region));
+
+  const L = (spec: maplibregl.LayerSpecification) => {
+    if (!map.getLayer(spec.id)) map.addLayer(spec);
+  };
+  L({ id: "terrain-fill", type: "fill", source: "terrain", paint: { "fill-color": ELEV_RAMP(region) as never, "fill-opacity": 0.5 } });
+  L({ id: "sectors-fill", type: "fill", source: "sectors", paint: { "fill-color": DENSITY_RAMP as never, "fill-opacity": 0.55 } });
+  L({ id: "sectors-line", type: "line", source: "sectors", paint: { "line-color": "#94a3b8", "line-width": ["case", ["boolean", ["feature-state", "selected"], false], 3, 1] as never } });
+  L({ id: "drainage-line", type: "line", source: "drainage", layout: { "line-cap": "round" }, paint: { "line-color": "#9a9a9a", "line-width": region === "gaza" ? 14 : 10, "line-opacity": 0.35, "line-blur": 4 } });
+  L({ id: "sar-fill", type: "fill", source: "sar", paint: { "fill-color": ["interpolate", ["linear"], ["get", "change"], -6, "#b2182b", -2, "#d6604d", 0, "#f7f7f7", 2, "#8a8a8a", 6, "#4a4a4a"] as never, "fill-opacity": 0.75 } });
+  L({ id: "hazard-heat", type: "heatmap", source: "centroids", paint: { "heatmap-weight": ["/", ["get", "risk"], 100] as never, "heatmap-radius": region === "gaza" ? 60 : 45, "heatmap-intensity": 1.2, "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(0,0,0,0)", 0.2, "#9a9a9a", 0.45, "#e9a23b", 0.7, "#d7263d", 1, "#7b2cbf"] as never, "heatmap-opacity": 0.6 } });
+  L({ id: "risk-outline", type: "line", source: "sectors", paint: { "line-color": RISK_RAMP as never, "line-width": 2.5 } });
+  L({ id: "facilities-pt", type: "circle", source: "facilities", paint: { "circle-radius": 4.5, "circle-stroke-width": 1.2, "circle-stroke-color": "#000000", "circle-color": ["match", ["get", "type"], "medical", "#f472b6", "water", "#38bdf8", "heating", "#fb923c", "food", "#a3e635", "cooling", "#67e8f9", "#e2e8f0"] as never } });
+  L({ id: "sector-labels", type: "symbol", source: "centroids", layout: { "text-field": ["get", "label"], "text-size": 10, "text-font": ["Open Sans Regular"] as never, "text-allow-overlap": false }, paint: { "text-color": "#e2e8f0", "text-halo-color": "#020617", "text-halo-width": 1.2 } });
+  syncNisar(map, p.nisar);
+  applyVisibility(map, p.layers);
+}
+
+const LAYER_IDS: Record<LayerKey, string[]> = {
+  sectors: ["sectors-fill", "sectors-line", "sector-labels", "risk-outline"],
+  sar: ["sar-fill"],
+  drainage: ["drainage-line"],
+  terrain: ["terrain-fill"],
+  facilities: ["facilities-pt"],
+  hazard: ["hazard-heat"],
+  nisar: ["nisar-raster"],
+};
+const OPACITY_PROP: Record<string, [string, number]> = {
+  "sectors-fill": ["fill-opacity", 0.7],
+  "sar-fill": ["fill-opacity", 0.85],
+  "drainage-line": ["line-opacity", 0.5],
+  "terrain-fill": ["fill-opacity", 0.7],
+  "facilities-pt": ["circle-opacity", 1],
+  "hazard-heat": ["heatmap-opacity", 0.85],
+  "nisar-raster": ["raster-opacity", 1],
+};
+
+function applyVisibility(map: maplibregl.Map, layers: Props["layers"]) {
+  LAYER_KEYS.forEach((k) => {
+    LAYER_IDS[k].forEach((id) => {
+      if (!map.getLayer(id)) return;
+      map.setLayoutProperty(id, "visibility", layers[k].on ? "visible" : "none");
+      const op = OPACITY_PROP[id];
+      if (op) map.setPaintProperty(id, op[0] as never, (op[1] * layers[k].opacity) as never);
+    });
+  });
+}
+
+export default function MapView(p: Props) {
+  const el = useRef<HTMLDivElement>(null);
+  const map = useRef<maplibregl.Map | null>(null);
+  const props = useRef(p);
+  props.current = p;
+
+  useEffect(() => {
+    if (!el.current) return;
+    const meta = REGIONS[p.region];
+    const m = new maplibregl.Map({
+      container: el.current,
+      style: BASEMAPS[p.basemap ?? "dark"],
+      center: meta.center,
+      zoom: meta.zoom,
+      attributionControl: { compact: true },
+      interactive: p.interactive !== false,
+    });
+    map.current = m;
+    const resizeObserver = new ResizeObserver(() => m.resize());
+    resizeObserver.observe(el.current);
+    if (p.mapRef) p.mapRef.current = m;
+    if (p.interactive !== false) m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    m.on("style.load", () => install(m, props.current));
+    let selected: number | null = null;
+    m.on("click", "sectors-fill", (e) => {
+      const f = e.features?.[0];
+      if (!f) return;
+      props.current.onSelect?.(f.properties["id"] as string);
+    });
+    m.on("click", (e) => {
+      const hits = m.queryRenderedFeatures(e.point, { layers: ["sectors-fill"] });
+      if (!hits.length) props.current.onSelect?.(null);
+    });
+    m.on("mousemove", (e) => props.current.onPointer?.(e.lngLat));
+    m.on("mouseenter", "sectors-fill", () => (m.getCanvas().style.cursor = "pointer"));
+    m.on("mouseleave", "sectors-fill", () => (m.getCanvas().style.cursor = ""));
+    m.on("click", "facilities-pt", (e) => {
+      const f = e.features?.[0];
+      if (!f) return;
+      new maplibregl.Popup({ closeButton: false })
+        .setLngLat(e.lngLat)
+        .setHTML(`<b>${f.properties["name"]}</b><br/>${f.properties["status"]}`)
+        .addTo(m);
+    });
+    (m as unknown as { _sel: (n: number | null) => void })._sel = (n) => {
+      if (selected != null) m.setFeatureState({ source: "sectors", id: selected }, { selected: false });
+      selected = n;
+      if (n != null) m.setFeatureState({ source: "sectors", id: n }, { selected: true });
+    };
+    return () => {
+      resizeObserver.disconnect();
+      m.remove();
+      map.current = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // region change → reposition + reinstall
+  useEffect(() => {
+    const m = map.current;
+    if (!m) return;
+    const meta = REGIONS[p.region];
+    m.jumpTo({ center: meta.center, zoom: meta.zoom });
+    if (m.isStyleLoaded()) install(m, p);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [p.region]);
+
+  useEffect(() => {
+    const m = map.current;
+    if (m?.isStyleLoaded() && m.getSource("sectors")) install(m, p);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [p.scores, p.pass]);
+
+  useEffect(() => {
+    const m = map.current;
+    // Not isStyleLoaded(): it stays false while tiles load. style.load's install covers a pending style.
+    if (!m?.getLayer("sectors-line")) return;
+    syncNisar(m, p.nisar);
+    applyVisibility(m, props.current.layers);
+  }, [p.nisar]);
+
+  useEffect(() => {
+    const m = map.current;
+    if (m?.isStyleLoaded()) applyVisibility(m, p.layers);
+  }, [p.layers]);
+
+  useEffect(() => {
+    map.current?.setStyle(BASEMAPS[p.basemap ?? "dark"]);
+  }, [p.basemap]);
+
+  useEffect(() => {
+    const m = map.current as unknown as { _sel?: (n: number | null) => void } | null;
+    if (!m?._sel || !map.current?.getSource("sectors")) return;
+    m._sel(p.selectedId ? Number(p.selectedId.slice(3)) : null);
+  }, [p.selectedId]);
+
+  useEffect(() => {
+    if (p.flyTo) map.current?.flyTo({ center: p.flyTo, zoom: p.region === "gaza" ? 13.5 : 10.5 });
+  }, [p.flyTo, p.region]);
+
+  // camera sync for swipe-compare
+  useEffect(() => {
+    const other = p.syncWith?.current;
+    const m = map.current;
+    if (!other || !m) return;
+    const sync = () => m.jumpTo({ center: other.getCenter(), zoom: other.getZoom(), bearing: other.getBearing(), pitch: other.getPitch() });
+    sync();
+    other.on("move", sync);
+    return () => {
+      other.off("move", sync);
+    };
+  });
+
+  return (
+    <div className="absolute inset-0">
+      <div ref={el} className="h-full w-full" />
+    </div>
+  );
+}
