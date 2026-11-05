@@ -56,8 +56,11 @@ npm test
 
 Para actualizar los datos NISAR necesitás una cuenta de Earthdata Login y Python. Los pasos están en [`pipeline/README.md`](pipeline/README.md).
 
+## Publicación
+
+El sitio se publica en Netlify con la configuración de `netlify.toml`. Los datos NISAR ya están en el repositorio, así que el build no necesita Python ni credenciales de Earthdata.
+
 ## Tecnología
 
 - App: TanStack Start, React, TypeScript, Tailwind CSS y MapLibre.
 - Pipeline: Python, h5py, NumPy, SciPy y earthaccess.
-- Editor: el proyecto está conectado a [Lovable](https://lovable.dev).
