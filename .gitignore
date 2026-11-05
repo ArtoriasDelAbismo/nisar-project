@@ -30,3 +30,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# NISAR pipeline
+pipeline/.venv
+pipeline/cache
+__pycache__
+.pytest_cache
