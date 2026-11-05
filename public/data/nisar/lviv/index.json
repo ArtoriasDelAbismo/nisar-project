@@ -1,0 +1,1570 @@
+{
+ "region": "lviv",
+ "generatedAt": "2026-11-05T14:04:13+00:00",
+ "passes": [
+  {
+   "id": "NISAR_L2_PR_GCOV_033_123_D_063_2005_DHDH_A_20261020T174318_20261020T174354_P05023_N_F_J_001",
+   "acquired": "2026-10-20T17:43:18Z",
+   "track": 123,
+   "frame": 63,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-10-08T17:43:18Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.7,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261020-t123-f63-hh.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20261020-t123-f63-change.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -4.89,
+     "hvDb": -9.15,
+     "deltaHhDb": -0.09,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.2,
+     "darkerPct": 0.3
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -2.65,
+     "hvDb": -7.6,
+     "deltaHhDb": -0.41,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.0,
+     "darkerPct": 0.4
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -3.74,
+     "hvDb": -8.35,
+     "deltaHhDb": -0.27,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.4,
+     "darkerPct": 0.3
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -4.06,
+     "hvDb": -8.02,
+     "deltaHhDb": -0.21,
+     "deltaHvDb": 0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "LV-05": {
+     "validPct": 100.0,
+     "hhDb": -5.02,
+     "hvDb": -9.87,
+     "deltaHhDb": 0.15,
+     "deltaHvDb": 0.38,
+     "brighterPct": 0.4,
+     "darkerPct": 0.3
+    },
+    "LV-06": {
+     "validPct": 100.0,
+     "hhDb": -9.46,
+     "hvDb": -12.31,
+     "deltaHhDb": 0.25,
+     "deltaHvDb": 0.05,
+     "brighterPct": 1.1,
+     "darkerPct": 2.5
+    },
+    "LV-07": {
+     "validPct": 100.0,
+     "hhDb": -4.64,
+     "hvDb": -8.45,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": 0.3,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-08": {
+     "validPct": 100.0,
+     "hhDb": -4.67,
+     "hvDb": -8.01,
+     "deltaHhDb": -0.51,
+     "deltaHvDb": 0.22,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -5.07,
+     "hvDb": -9.7,
+     "deltaHhDb": -0.11,
+     "deltaHvDb": -0.14,
+     "brighterPct": 0.1,
+     "darkerPct": 0.3
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -7.36,
+     "hvDb": -10.21,
+     "deltaHhDb": -0.3,
+     "deltaHvDb": -0.25,
+     "brighterPct": 0.2,
+     "darkerPct": 4.2
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_033_100_A_027_2005_DHDH_A_20261019T030516_20261019T030552_P05023_N_F_J_001",
+   "acquired": "2026-10-19T03:05:16Z",
+   "track": 100,
+   "frame": 27,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-10-07T03:05:16Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.89,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261019-t100-f27-hh.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20261019-t100-f27-change.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.03,
+     "hvDb": -11.49,
+     "deltaHhDb": -0.29,
+     "deltaHvDb": -0.26,
+     "brighterPct": 0.2,
+     "darkerPct": 0.4
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.37,
+     "hvDb": -9.55,
+     "deltaHhDb": -0.57,
+     "deltaHvDb": -0.48,
+     "brighterPct": 0.1,
+     "darkerPct": 0.2
+    },
+    "LV-03": {
+     "validPct": 99.8,
+     "hhDb": -4.14,
+     "hvDb": -10.58,
+     "deltaHhDb": -0.43,
+     "deltaHvDb": -0.38,
+     "brighterPct": 0.6,
+     "darkerPct": 0.8
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -4.65,
+     "hvDb": -10.51,
+     "deltaHhDb": -0.47,
+     "deltaHvDb": -0.34,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -7.19,
+     "hvDb": -12.54,
+     "deltaHhDb": -0.25,
+     "deltaHvDb": 0.0,
+     "brighterPct": 0.1,
+     "darkerPct": 0.2
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -8.38,
+     "hvDb": -13.71,
+     "deltaHhDb": -0.18,
+     "deltaHvDb": -0.08,
+     "brighterPct": 0.5,
+     "darkerPct": 4.9
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_033_028_A_027_2005_DHDH_A_20261014T031336_20261014T031411_P05023_N_F_J_001",
+   "acquired": "2026-10-14T03:13:36Z",
+   "track": 28,
+   "frame": 27,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-10-02T03:13:36Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.47,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261014-t28-f27-hh.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20261014-t28-f27-change.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.54,
+     "hvDb": -12.29,
+     "deltaHhDb": -0.2,
+     "deltaHvDb": -0.3,
+     "brighterPct": 0.3,
+     "darkerPct": 0.2
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.72,
+     "hvDb": -10.15,
+     "deltaHhDb": -0.32,
+     "deltaHvDb": -0.52,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.44,
+     "hvDb": -11.23,
+     "deltaHhDb": -0.26,
+     "deltaHvDb": -0.49,
+     "brighterPct": 0.2,
+     "darkerPct": 0.8
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -5.27,
+     "hvDb": -11.38,
+     "deltaHhDb": -0.37,
+     "deltaHvDb": -0.49,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "LV-05": {
+     "validPct": 100.0,
+     "hhDb": -6.47,
+     "hvDb": -12.41,
+     "deltaHhDb": 0.2,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.8,
+     "darkerPct": 0.2
+    },
+    "LV-06": {
+     "validPct": 100.0,
+     "hhDb": -10.7,
+     "hvDb": -17.09,
+     "deltaHhDb": 0.59,
+     "deltaHvDb": 0.58,
+     "brighterPct": 2.7,
+     "darkerPct": 6.2
+    },
+    "LV-07": {
+     "validPct": 100.0,
+     "hhDb": -5.29,
+     "hvDb": -11.62,
+     "deltaHhDb": 0.08,
+     "deltaHvDb": -0.17,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-08": {
+     "validPct": 100.0,
+     "hhDb": -5.04,
+     "hvDb": -10.61,
+     "deltaHhDb": -0.32,
+     "deltaHvDb": -0.42,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -7.61,
+     "hvDb": -13.32,
+     "deltaHhDb": -0.11,
+     "deltaHvDb": -0.05,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -8.42,
+     "hvDb": -14.46,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": 0.21,
+     "brighterPct": 0.4,
+     "darkerPct": 0.0
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_033_022_D_063_2005_DHDH_A_20261013T173459_20261013T173534_P05023_N_F_J_001",
+   "acquired": "2026-10-13T17:34:59Z",
+   "track": 22,
+   "frame": 63,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-10-01T17:34:59Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.37,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261013-t22-f63-hh.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20261013-t22-f63-change.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.64,
+     "hvDb": -11.61,
+     "deltaHhDb": -0.02,
+     "deltaHvDb": -0.17,
+     "brighterPct": 0.3,
+     "darkerPct": 0.1
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.1,
+     "hvDb": -9.72,
+     "deltaHhDb": -0.18,
+     "deltaHvDb": -0.36,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.37,
+     "hvDb": -10.57,
+     "deltaHhDb": -0.15,
+     "deltaHvDb": -0.28,
+     "brighterPct": 0.2,
+     "darkerPct": 0.4
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -5.03,
+     "hvDb": -10.54,
+     "deltaHhDb": -0.28,
+     "deltaHvDb": -0.35,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -5.75,
+     "hvDb": -12.35,
+     "deltaHhDb": 0.06,
+     "deltaHvDb": 0.09,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -8.04,
+     "hvDb": -13.4,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": 0.0,
+     "brighterPct": 0.2,
+     "darkerPct": 0.0
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_032_123_D_063_2005_DHDH_A_20261008T174318_20261008T174354_P05023_N_F_J_001",
+   "acquired": "2026-10-08T17:43:18Z",
+   "track": 123,
+   "frame": 63,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-26T17:43:18Z",
+   "baselineDays": 12,
+   "sceneShiftDb": -0.02,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261008-t123-f63-hh.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20261008-t123-f63-change.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.41,
+     "hvDb": -8.74,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": -0.51,
+     "brighterPct": 0.3,
+     "darkerPct": 0.3
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -2.95,
+     "hvDb": -7.22,
+     "deltaHhDb": 0.06,
+     "deltaHvDb": -0.66,
+     "brighterPct": 0.2,
+     "darkerPct": 0.2
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.14,
+     "hvDb": -7.97,
+     "deltaHhDb": 0.01,
+     "deltaHvDb": -0.42,
+     "brighterPct": 0.2,
+     "darkerPct": 0.3
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -4.55,
+     "hvDb": -7.75,
+     "deltaHhDb": 0.01,
+     "deltaHvDb": -0.48,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-05": {
+     "validPct": 100.0,
+     "hhDb": -5.76,
+     "hvDb": -9.87,
+     "deltaHhDb": -0.21,
+     "deltaHvDb": -0.76,
+     "brighterPct": 0.1,
+     "darkerPct": 0.5
+    },
+    "LV-06": {
+     "validPct": 100.0,
+     "hhDb": -10.51,
+     "hvDb": -11.86,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": -0.33,
+     "brighterPct": 0.2,
+     "darkerPct": 1.9
+    },
+    "LV-07": {
+     "validPct": 100.0,
+     "hhDb": -5.21,
+     "hvDb": -8.36,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": -0.21,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-08": {
+     "validPct": 100.0,
+     "hhDb": -4.78,
+     "hvDb": -7.83,
+     "deltaHhDb": 0.28,
+     "deltaHvDb": -0.34,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -5.54,
+     "hvDb": -9.14,
+     "deltaHhDb": 0.07,
+     "deltaHvDb": 0.05,
+     "brighterPct": 0.5,
+     "darkerPct": 0.0
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -7.67,
+     "hvDb": -9.49,
+     "deltaHhDb": 0.22,
+     "deltaHvDb": 0.17,
+     "brighterPct": 0.7,
+     "darkerPct": 0.0
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_032_100_A_027_2005_DHDH_A_20261007T030516_20261007T030552_P05023_N_F_J_001",
+   "acquired": "2026-10-07T03:05:16Z",
+   "track": 100,
+   "frame": 27,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": null,
+   "baselineDays": null,
+   "sceneShiftDb": null,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261007-t100-f27-hh.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    },
+    "change": null
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.49,
+     "hvDb": -11.85,
+     "deltaHhDb": null,
+     "deltaHvDb": null,
+     "brighterPct": null,
+     "darkerPct": null
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.67,
+     "hvDb": -9.75,
+     "deltaHhDb": null,
+     "deltaHvDb": null,
+     "brighterPct": null,
+     "darkerPct": null
+    },
+    "LV-03": {
+     "validPct": 99.6,
+     "hhDb": -4.53,
+     "hvDb": -10.88,
+     "deltaHhDb": null,
+     "deltaHvDb": null,
+     "brighterPct": null,
+     "darkerPct": null
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -5.01,
+     "hvDb": -10.83,
+     "deltaHhDb": null,
+     "deltaHvDb": null,
+     "brighterPct": null,
+     "darkerPct": null
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -7.75,
+     "hvDb": -13.2,
+     "deltaHhDb": null,
+     "deltaHvDb": null,
+     "brighterPct": null,
+     "darkerPct": null
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -8.74,
+     "hvDb": -14.21,
+     "deltaHhDb": null,
+     "deltaHvDb": null,
+     "brighterPct": null,
+     "darkerPct": null
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_032_028_A_027_2005_DHDH_A_20261002T031336_20261002T031411_P05023_N_F_J_001",
+   "acquired": "2026-10-02T03:13:36Z",
+   "track": 28,
+   "frame": 27,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-20T03:13:36Z",
+   "baselineDays": 12,
+   "sceneShiftDb": -0.59,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261002-t28-f27-hh.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20261002-t28-f27-change.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.74,
+     "hvDb": -12.64,
+     "deltaHhDb": 0.42,
+     "deltaHvDb": 0.45,
+     "brighterPct": 0.6,
+     "darkerPct": 0.1
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.88,
+     "hvDb": -10.36,
+     "deltaHhDb": 0.5,
+     "deltaHvDb": 0.55,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.62,
+     "hvDb": -11.42,
+     "deltaHhDb": 0.41,
+     "deltaHvDb": 0.51,
+     "brighterPct": 0.9,
+     "darkerPct": 0.2
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -5.32,
+     "hvDb": -11.59,
+     "deltaHhDb": 0.31,
+     "deltaHvDb": 0.35,
+     "brighterPct": 0.2,
+     "darkerPct": 0.0
+    },
+    "LV-05": {
+     "validPct": 73.2,
+     "hhDb": -6.77,
+     "hvDb": -12.75,
+     "deltaHhDb": 0.44,
+     "deltaHvDb": 0.27,
+     "brighterPct": 0.7,
+     "darkerPct": 0.1
+    },
+    "LV-06": {
+     "validPct": 100.0,
+     "hhDb": -11.67,
+     "hvDb": -18.61,
+     "deltaHhDb": -0.18,
+     "deltaHvDb": -0.32,
+     "brighterPct": 0.7,
+     "darkerPct": 3.0
+    },
+    "LV-07": {
+     "validPct": 100.0,
+     "hhDb": -5.8,
+     "hvDb": -12.16,
+     "deltaHhDb": 0.63,
+     "deltaHvDb": 0.48,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "LV-08": {
+     "validPct": 100.0,
+     "hhDb": -5.13,
+     "hvDb": -10.86,
+     "deltaHhDb": 0.55,
+     "deltaHvDb": 0.34,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -7.89,
+     "hvDb": -13.95,
+     "deltaHhDb": 0.16,
+     "deltaHvDb": 0.1,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -8.83,
+     "hvDb": -15.38,
+     "deltaHhDb": 0.14,
+     "deltaHvDb": 0.14,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_032_022_D_063_2005_DHDH_A_20261001T173459_20261001T173534_P05023_N_F_J_001",
+   "acquired": "2026-10-01T17:34:59Z",
+   "track": 22,
+   "frame": 63,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-19T17:34:59Z",
+   "baselineDays": 12,
+   "sceneShiftDb": -0.49,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20261001-t22-f63-hh.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20261001-t22-f63-change.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.97,
+     "hvDb": -11.99,
+     "deltaHhDb": 0.24,
+     "deltaHvDb": 0.27,
+     "brighterPct": 0.4,
+     "darkerPct": 0.2
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.29,
+     "hvDb": -9.96,
+     "deltaHhDb": 0.33,
+     "deltaHvDb": 0.34,
+     "brighterPct": 0.2,
+     "darkerPct": 0.1
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.57,
+     "hvDb": -10.83,
+     "deltaHhDb": 0.25,
+     "deltaHvDb": 0.26,
+     "brighterPct": 0.4,
+     "darkerPct": 0.2
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -5.08,
+     "hvDb": -10.75,
+     "deltaHhDb": 0.25,
+     "deltaHvDb": 0.24,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -6.06,
+     "hvDb": -12.98,
+     "deltaHhDb": 0.1,
+     "deltaHvDb": -0.08,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -8.3,
+     "hvDb": -14.06,
+     "deltaHhDb": 0.06,
+     "deltaHvDb": 0.0,
+     "brighterPct": 0.1,
+     "darkerPct": 0.3
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_031_123_D_063_2005_DHDH_A_20260926T174318_20260926T174353_P05023_N_F_J_001",
+   "acquired": "2026-09-26T17:43:18Z",
+   "track": 123,
+   "frame": 63,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-14T17:43:18Z",
+   "baselineDays": 12,
+   "sceneShiftDb": -0.23,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20260926-t123-f63-hh.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20260926-t123-f63-change.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.37,
+     "hvDb": -9.88,
+     "deltaHhDb": 0.05,
+     "deltaHvDb": 0.34,
+     "brighterPct": 0.3,
+     "darkerPct": 0.1
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -2.99,
+     "hvDb": -8.21,
+     "deltaHhDb": 0.08,
+     "deltaHvDb": 0.55,
+     "brighterPct": 0.2,
+     "darkerPct": 0.1
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.13,
+     "hvDb": -9.16,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": 0.36,
+     "brighterPct": 0.2,
+     "darkerPct": 0.4
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -4.55,
+     "hvDb": -8.84,
+     "deltaHhDb": 0.09,
+     "deltaHvDb": 0.39,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-05": {
+     "validPct": 100.0,
+     "hhDb": -5.53,
+     "hvDb": -10.71,
+     "deltaHhDb": 0.23,
+     "deltaHvDb": 0.61,
+     "brighterPct": 0.2,
+     "darkerPct": 0.1
+    },
+    "LV-06": {
+     "validPct": 100.0,
+     "hhDb": -10.21,
+     "hvDb": -13.22,
+     "deltaHhDb": 0.04,
+     "deltaHvDb": 0.26,
+     "brighterPct": 0.1,
+     "darkerPct": 1.0
+    },
+    "LV-07": {
+     "validPct": 100.0,
+     "hhDb": -5.23,
+     "hvDb": -9.76,
+     "deltaHhDb": 0.23,
+     "deltaHvDb": 0.32,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-08": {
+     "validPct": 100.0,
+     "hhDb": -5.09,
+     "hvDb": -9.02,
+     "deltaHhDb": 0.14,
+     "deltaHvDb": 0.45,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -5.64,
+     "hvDb": -10.84,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": -0.13,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -7.82,
+     "hvDb": -11.37,
+     "deltaHhDb": -0.17,
+     "deltaHvDb": -0.26,
+     "brighterPct": 0.1,
+     "darkerPct": 0.4
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_031_028_A_027_2005_DHDH_A_20260920T031336_20260920T031411_P05023_F_F_J_001",
+   "acquired": "2026-09-20T03:13:36Z",
+   "track": 28,
+   "frame": 27,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-08T03:13:36Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.75,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20260920-t28-f27-hh.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20260920-t28-f27-change.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.57,
+     "hvDb": -12.67,
+     "deltaHhDb": -0.41,
+     "deltaHvDb": -0.3,
+     "brighterPct": 0.1,
+     "darkerPct": 0.5
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.78,
+     "hvDb": -10.44,
+     "deltaHhDb": -0.62,
+     "deltaHvDb": -0.49,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.44,
+     "hvDb": -11.48,
+     "deltaHhDb": -0.42,
+     "deltaHvDb": -0.37,
+     "brighterPct": 0.3,
+     "darkerPct": 0.6
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -5.0,
+     "hvDb": -11.49,
+     "deltaHhDb": -0.26,
+     "deltaHvDb": -0.22,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-05": {
+     "validPct": 55.3,
+     "hhDb": -6.91,
+     "hvDb": -12.67,
+     "deltaHhDb": null,
+     "deltaHvDb": null,
+     "brighterPct": null,
+     "darkerPct": null
+    },
+    "LV-06": {
+     "validPct": 100.0,
+     "hhDb": -10.53,
+     "hvDb": -17.55,
+     "deltaHhDb": -0.32,
+     "deltaHvDb": -0.16,
+     "brighterPct": 0.3,
+     "darkerPct": 8.5
+    },
+    "LV-07": {
+     "validPct": 100.0,
+     "hhDb": -5.84,
+     "hvDb": -12.21,
+     "deltaHhDb": -0.81,
+     "deltaHvDb": -0.58,
+     "brighterPct": 0.1,
+     "darkerPct": 0.3
+    },
+    "LV-08": {
+     "validPct": 100.0,
+     "hhDb": -5.1,
+     "hvDb": -10.78,
+     "deltaHhDb": -0.83,
+     "deltaHvDb": -0.59,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -7.51,
+     "hvDb": -13.57,
+     "deltaHhDb": -0.14,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -8.42,
+     "hvDb": -15.05,
+     "deltaHhDb": -0.07,
+     "deltaHvDb": -0.01,
+     "brighterPct": 0.4,
+     "darkerPct": 0.1
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_031_022_D_063_2005_DHDH_A_20260919T173459_20260919T173534_P05023_F_F_J_001",
+   "acquired": "2026-09-19T17:34:59Z",
+   "track": 22,
+   "frame": 63,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-07T17:34:59Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 1.01,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20260919-t22-f63-hh.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20260919-t22-f63-change.png",
+     "corners": [
+      [
+       23.36665,
+       50.501504
+      ],
+      [
+       24.313592,
+       50.52723
+      ],
+      [
+       24.384219,
+       49.238479
+      ],
+      [
+       23.462061,
+       49.213893
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.72,
+     "hvDb": -11.73,
+     "deltaHhDb": -0.37,
+     "deltaHvDb": -0.11,
+     "brighterPct": 0.2,
+     "darkerPct": 0.3
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -3.11,
+     "hvDb": -9.71,
+     "deltaHhDb": -0.63,
+     "deltaHvDb": -0.32,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -4.34,
+     "hvDb": -10.56,
+     "deltaHhDb": -0.43,
+     "deltaHvDb": -0.18,
+     "brighterPct": 0.3,
+     "darkerPct": 0.3
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -4.84,
+     "hvDb": -10.45,
+     "deltaHhDb": -0.38,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -5.74,
+     "hvDb": -12.41,
+     "deltaHhDb": -0.26,
+     "deltaHvDb": -0.17,
+     "brighterPct": 0.1,
+     "darkerPct": 0.1
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -7.9,
+     "hvDb": -13.45,
+     "deltaHhDb": -0.26,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.1,
+     "darkerPct": 0.3
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_030_123_D_063_2005_DHDH_A_20260914T174318_20260914T174353_P05023_N_F_J_001",
+   "acquired": "2026-09-14T17:43:18Z",
+   "track": 123,
+   "frame": 63,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-02T17:43:18Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.22,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/lviv/20260914-t123-f63-hh.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/lviv/20260914-t123-f63-change.png",
+     "corners": [
+      [
+       23.461391,
+       50.525552
+      ],
+      [
+       24.402604,
+       50.501828
+      ],
+      [
+       24.313365,
+       49.215702
+      ],
+      [
+       23.396767,
+       49.238376
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "LV-01": {
+     "validPct": 100.0,
+     "hhDb": -5.18,
+     "hvDb": -8.89,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": -0.42,
+     "brighterPct": 0.2,
+     "darkerPct": 0.3
+    },
+    "LV-02": {
+     "validPct": 100.0,
+     "hhDb": -2.83,
+     "hvDb": -7.42,
+     "deltaHhDb": -0.11,
+     "deltaHvDb": -0.59,
+     "brighterPct": 0.1,
+     "darkerPct": 0.2
+    },
+    "LV-03": {
+     "validPct": 100.0,
+     "hhDb": -3.93,
+     "hvDb": -8.21,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": -0.37,
+     "brighterPct": 0.4,
+     "darkerPct": 0.3
+    },
+    "LV-04": {
+     "validPct": 100.0,
+     "hhDb": -4.41,
+     "hvDb": -7.95,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": -0.35,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-05": {
+     "validPct": 100.0,
+     "hhDb": -5.56,
+     "hvDb": -10.01,
+     "deltaHhDb": -0.28,
+     "deltaHvDb": -0.58,
+     "brighterPct": 0.4,
+     "darkerPct": 0.1
+    },
+    "LV-06": {
+     "validPct": 100.0,
+     "hhDb": -9.95,
+     "hvDb": -12.08,
+     "deltaHhDb": -0.54,
+     "deltaHvDb": -0.35,
+     "brighterPct": 0.1,
+     "darkerPct": 1.1
+    },
+    "LV-07": {
+     "validPct": 100.0,
+     "hhDb": -5.25,
+     "hvDb": -8.76,
+     "deltaHhDb": -0.25,
+     "deltaHvDb": -0.24,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "LV-08": {
+     "validPct": 100.0,
+     "hhDb": -4.98,
+     "hvDb": -8.22,
+     "deltaHhDb": -0.09,
+     "deltaHvDb": -0.3,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "LV-09": {
+     "validPct": 100.0,
+     "hhDb": -5.41,
+     "hvDb": -9.38,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": 0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "LV-10": {
+     "validPct": 100.0,
+     "hhDb": -7.4,
+     "hvDb": -9.69,
+     "deltaHhDb": 0.16,
+     "deltaHvDb": 0.26,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,1815 @@
+{
+ "region": "gaza",
+ "generatedAt": "2026-11-05T14:00:16+00:00",
+ "passes": [
+  {
+   "id": "NISAR_L2_PR_GCOV_033_151_D_073_2005_DHDH_A_20261022T162544_20261022T162618_P05023_N_F_J_001",
+   "acquired": "2026-10-22T16:25:44Z",
+   "track": 151,
+   "frame": 73,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-10-10T16:25:43Z",
+   "baselineDays": 12,
+   "sceneShiftDb": -0.06,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20261022-t151-f73-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20261022-t151-f73-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -10.82,
+     "hvDb": -19.0,
+     "deltaHhDb": 0.07,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -4.1,
+     "hvDb": -12.69,
+     "deltaHhDb": 0.0,
+     "deltaHvDb": 0.1,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -6.89,
+     "hvDb": -14.63,
+     "deltaHhDb": 0.03,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -1.05,
+     "hvDb": -8.97,
+     "deltaHhDb": 0.05,
+     "deltaHvDb": 0.13,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -2.13,
+     "hvDb": -9.05,
+     "deltaHhDb": 0.08,
+     "deltaHvDb": 0.08,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.2,
+     "hvDb": -13.88,
+     "deltaHhDb": 0.09,
+     "deltaHvDb": 0.08,
+     "brighterPct": 0.2,
+     "darkerPct": 0.0
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -6.67,
+     "hvDb": -13.47,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.1,
+     "darkerPct": 0.2
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -7.63,
+     "hvDb": -14.32,
+     "deltaHhDb": 0.05,
+     "deltaHvDb": 0.18,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -6.75,
+     "hvDb": -14.68,
+     "deltaHhDb": 0.17,
+     "deltaHvDb": 0.2,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.19,
+     "hvDb": -14.28,
+     "deltaHhDb": 0.1,
+     "deltaHvDb": 0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.53,
+     "hvDb": -14.88,
+     "deltaHhDb": 0.01,
+     "deltaHvDb": -0.0,
+     "brighterPct": 0.5,
+     "darkerPct": 2.6
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -8.53,
+     "hvDb": -15.96,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": 0.05,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -4.51,
+     "hvDb": -10.96,
+     "deltaHhDb": 0.08,
+     "deltaHvDb": 0.17,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -4.71,
+     "hvDb": -11.19,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": 0.13,
+     "brighterPct": 0.0,
+     "darkerPct": 0.3
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -6.19,
+     "hvDb": -13.21,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": 0.11,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -6.06,
+     "hvDb": -12.53,
+     "deltaHhDb": 0.11,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.0,
+     "darkerPct": 0.3
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_033_100_A_017_2005_DHDH_A_20261019T025938_20261019T030012_P05023_N_F_J_001",
+   "acquired": "2026-10-19T02:59:38Z",
+   "track": 100,
+   "frame": 17,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-10-07T02:59:38Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.05,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20261019-t100-f17-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20261019-t100-f17-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -12.17,
+     "hvDb": -19.64,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": -0.05,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -6.07,
+     "hvDb": -12.06,
+     "deltaHhDb": -0.13,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -8.16,
+     "hvDb": -14.3,
+     "deltaHhDb": 0.11,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -3.5,
+     "hvDb": -8.55,
+     "deltaHhDb": -0.07,
+     "deltaHvDb": 0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -3.5,
+     "hvDb": -8.7,
+     "deltaHhDb": -0.13,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.37,
+     "hvDb": -14.22,
+     "deltaHhDb": -0.1,
+     "deltaHvDb": -0.17,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -7.19,
+     "hvDb": -13.31,
+     "deltaHhDb": -0.19,
+     "deltaHvDb": -0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -8.34,
+     "hvDb": -14.55,
+     "deltaHhDb": -0.1,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -7.2,
+     "hvDb": -14.7,
+     "deltaHhDb": 0.07,
+     "deltaHvDb": 0.17,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.65,
+     "hvDb": -14.59,
+     "deltaHhDb": 0.07,
+     "deltaHvDb": 0.01,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.85,
+     "hvDb": -14.94,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": 0.11,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -9.93,
+     "hvDb": -15.9,
+     "deltaHhDb": 0.03,
+     "deltaHvDb": -0.01,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -5.55,
+     "hvDb": -10.87,
+     "deltaHhDb": -0.15,
+     "deltaHvDb": -0.03,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -5.64,
+     "hvDb": -10.94,
+     "deltaHhDb": 0.01,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.3,
+     "darkerPct": 0.0
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -7.14,
+     "hvDb": -13.16,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": 0.01,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -7.01,
+     "hvDb": -12.49,
+     "deltaHhDb": 0.01,
+     "deltaHvDb": -0.04,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_032_151_D_073_2005_DHDH_A_20261010T162543_20261010T162618_P05023_N_F_J_001",
+   "acquired": "2026-10-10T16:25:43Z",
+   "track": 151,
+   "frame": 73,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-28T16:25:43Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.19,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20261010-t151-f73-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20261010-t151-f73-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -10.9,
+     "hvDb": -18.92,
+     "deltaHhDb": -0.02,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -4.14,
+     "hvDb": -12.5,
+     "deltaHhDb": -0.15,
+     "deltaHvDb": -0.13,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -6.77,
+     "hvDb": -14.33,
+     "deltaHhDb": -0.15,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -0.97,
+     "hvDb": -8.84,
+     "deltaHhDb": -0.17,
+     "deltaHvDb": -0.1,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -2.13,
+     "hvDb": -8.97,
+     "deltaHhDb": -0.16,
+     "deltaHvDb": -0.08,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.22,
+     "hvDb": -13.7,
+     "deltaHhDb": -0.09,
+     "deltaHvDb": 0.05,
+     "brighterPct": 0.2,
+     "darkerPct": 0.2
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -6.68,
+     "hvDb": -13.26,
+     "deltaHhDb": -0.09,
+     "deltaHvDb": -0.14,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -7.64,
+     "hvDb": -14.29,
+     "deltaHhDb": -0.15,
+     "deltaHvDb": -0.16,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -6.98,
+     "hvDb": -14.63,
+     "deltaHhDb": -0.0,
+     "deltaHvDb": 0.01,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.28,
+     "hvDb": -14.19,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": 0.08,
+     "brighterPct": 0.2,
+     "darkerPct": 0.2
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.5,
+     "hvDb": -14.71,
+     "deltaHhDb": -0.12,
+     "deltaHvDb": 0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -8.45,
+     "hvDb": -15.73,
+     "deltaHhDb": -0.02,
+     "deltaHvDb": -0.0,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -4.52,
+     "hvDb": -11.04,
+     "deltaHhDb": -0.15,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -4.65,
+     "hvDb": -11.13,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": -0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -6.12,
+     "hvDb": -13.0,
+     "deltaHhDb": 0.03,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -6.12,
+     "hvDb": -12.3,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": 0.08,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_032_100_A_017_2005_DHDH_A_20261007T025938_20261007T030012_P05023_N_F_J_001",
+   "acquired": "2026-10-07T02:59:38Z",
+   "track": 100,
+   "frame": 17,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-13T02:59:37Z",
+   "baselineDays": 24,
+   "sceneShiftDb": 0.06,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20261007-t100-f17-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20261007-t100-f17-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -12.21,
+     "hvDb": -19.56,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": -0.1,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -5.97,
+     "hvDb": -11.95,
+     "deltaHhDb": 0.12,
+     "deltaHvDb": 0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -8.15,
+     "hvDb": -14.37,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": -0.0,
+     "brighterPct": 0.2,
+     "darkerPct": 0.4
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -3.39,
+     "hvDb": -8.68,
+     "deltaHhDb": 0.12,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.4,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -3.56,
+     "hvDb": -8.57,
+     "deltaHhDb": 0.13,
+     "deltaHvDb": 0.07,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.3,
+     "hvDb": -13.87,
+     "deltaHhDb": 0.06,
+     "deltaHvDb": 0.17,
+     "brighterPct": 0.2,
+     "darkerPct": 0.1
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -7.15,
+     "hvDb": -13.31,
+     "deltaHhDb": 0.13,
+     "deltaHvDb": 0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -8.18,
+     "hvDb": -14.49,
+     "deltaHhDb": 0.06,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.4
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -7.29,
+     "hvDb": -14.76,
+     "deltaHhDb": 0.14,
+     "deltaHvDb": 0.21,
+     "brighterPct": 0.2,
+     "darkerPct": 0.0
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.85,
+     "hvDb": -14.54,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": 0.07,
+     "brighterPct": 0.2,
+     "darkerPct": 0.6
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.93,
+     "hvDb": -15.1,
+     "deltaHhDb": 0.17,
+     "deltaHvDb": 0.16,
+     "brighterPct": 0.3,
+     "darkerPct": 0.4
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -9.9,
+     "hvDb": -15.93,
+     "deltaHhDb": 0.0,
+     "deltaHvDb": 0.09,
+     "brighterPct": 0.3,
+     "darkerPct": 0.5
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -5.49,
+     "hvDb": -10.74,
+     "deltaHhDb": 0.13,
+     "deltaHvDb": 0.23,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -5.8,
+     "hvDb": -10.93,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -7.1,
+     "hvDb": -13.14,
+     "deltaHhDb": 0.09,
+     "deltaHvDb": 0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -7.04,
+     "hvDb": -12.39,
+     "deltaHhDb": -0.0,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.4,
+     "darkerPct": 0.1
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_031_151_D_073_2005_DHDH_A_20260928T162543_20260928T162618_P05023_N_F_J_001",
+   "acquired": "2026-09-28T16:25:43Z",
+   "track": 151,
+   "frame": 73,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-16T16:25:43Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.2,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20260928-t151-f73-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20260928-t151-f73-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -11.06,
+     "hvDb": -18.9,
+     "deltaHhDb": -0.07,
+     "deltaHvDb": 0.14,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -4.05,
+     "hvDb": -12.36,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -6.84,
+     "hvDb": -14.46,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": -0.01,
+     "brighterPct": 0.0,
+     "darkerPct": 0.4
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -0.99,
+     "hvDb": -8.72,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": -0.04,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -2.2,
+     "hvDb": -8.88,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": 0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.34,
+     "hvDb": -13.86,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.6,
+     "darkerPct": 0.2
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -6.77,
+     "hvDb": -13.08,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": 0.1,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -7.65,
+     "hvDb": -14.22,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -7.07,
+     "hvDb": -14.6,
+     "deltaHhDb": -0.02,
+     "deltaHvDb": 0.11,
+     "brighterPct": 0.4,
+     "darkerPct": 0.0
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.4,
+     "hvDb": -14.36,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": -0.05,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.49,
+     "hvDb": -14.77,
+     "deltaHhDb": 0.1,
+     "deltaHvDb": 0.06,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -8.63,
+     "hvDb": -15.82,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": -0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -4.56,
+     "hvDb": -10.92,
+     "deltaHhDb": -0.12,
+     "deltaHvDb": -0.01,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -4.75,
+     "hvDb": -11.04,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": 0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -6.34,
+     "hvDb": -13.1,
+     "deltaHhDb": -0.16,
+     "deltaHvDb": -0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -6.21,
+     "hvDb": -12.42,
+     "deltaHhDb": -0.1,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.2,
+     "darkerPct": 0.1
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_030_151_D_073_2005_DHDH_A_20260916T162543_20260916T162618_P05023_N_F_J_001",
+   "acquired": "2026-09-16T16:25:43Z",
+   "track": 151,
+   "frame": 73,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-04T16:25:44Z",
+   "baselineDays": 12,
+   "sceneShiftDb": -0.28,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20260916-t151-f73-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20260916-t151-f73-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -11.15,
+     "hvDb": -19.01,
+     "deltaHhDb": 0.09,
+     "deltaHvDb": -0.12,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -4.32,
+     "hvDb": -12.45,
+     "deltaHhDb": 0.09,
+     "deltaHvDb": 0.13,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -6.97,
+     "hvDb": -14.37,
+     "deltaHhDb": 0.03,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.2,
+     "darkerPct": 0.1
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -1.24,
+     "hvDb": -8.6,
+     "deltaHhDb": 0.24,
+     "deltaHvDb": 0.24,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -2.3,
+     "hvDb": -8.93,
+     "deltaHhDb": 0.05,
+     "deltaHvDb": 0.15,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.48,
+     "hvDb": -13.74,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": 0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.3
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -6.77,
+     "hvDb": -13.28,
+     "deltaHhDb": 0.0,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -7.92,
+     "hvDb": -14.24,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": 0.01,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -7.33,
+     "hvDb": -14.78,
+     "deltaHhDb": 0.16,
+     "deltaHvDb": -0.05,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.51,
+     "hvDb": -14.2,
+     "deltaHhDb": -0.1,
+     "deltaHvDb": 0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.81,
+     "hvDb": -14.85,
+     "deltaHhDb": 0.14,
+     "deltaHvDb": 0.1,
+     "brighterPct": 0.3,
+     "darkerPct": 0.0
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -8.71,
+     "hvDb": -15.73,
+     "deltaHhDb": 0.04,
+     "deltaHvDb": -0.01,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -4.63,
+     "hvDb": -10.95,
+     "deltaHhDb": 0.18,
+     "deltaHvDb": 0.2,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -4.87,
+     "hvDb": -11.06,
+     "deltaHhDb": 0.08,
+     "deltaHvDb": 0.17,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -6.45,
+     "hvDb": -12.93,
+     "deltaHhDb": 0.19,
+     "deltaHvDb": 0.17,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -6.21,
+     "hvDb": -12.36,
+     "deltaHhDb": 0.15,
+     "deltaHvDb": 0.11,
+     "brighterPct": 0.1,
+     "darkerPct": 0.2
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_030_100_A_017_2005_DHDH_A_20260913T025937_20260913T030012_P05023_N_F_J_001",
+   "acquired": "2026-09-13T02:59:37Z",
+   "track": 100,
+   "frame": 17,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-09-01T02:59:38Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.04,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20260913-t100-f17-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20260913-t100-f17-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -12.23,
+     "hvDb": -19.66,
+     "deltaHhDb": 0.13,
+     "deltaHvDb": 0.0,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -6.19,
+     "hvDb": -12.44,
+     "deltaHhDb": -0.08,
+     "deltaHvDb": -0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -8.41,
+     "hvDb": -14.58,
+     "deltaHhDb": -0.09,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -3.64,
+     "hvDb": -8.84,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": -0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -3.69,
+     "hvDb": -9.04,
+     "deltaHhDb": -0.1,
+     "deltaHvDb": -0.05,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.51,
+     "hvDb": -14.32,
+     "deltaHhDb": -0.02,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.3
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -7.19,
+     "hvDb": -13.73,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": -0.0,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -8.32,
+     "hvDb": -14.72,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -7.51,
+     "hvDb": -15.29,
+     "deltaHhDb": 0.12,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.2,
+     "darkerPct": 0.0
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.84,
+     "hvDb": -14.93,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.3,
+     "darkerPct": 0.0
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -8.11,
+     "hvDb": -15.56,
+     "deltaHhDb": -0.1,
+     "deltaHvDb": -0.0,
+     "brighterPct": 0.0,
+     "darkerPct": 0.7
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -10.1,
+     "hvDb": -16.34,
+     "deltaHhDb": 0.11,
+     "deltaHvDb": 0.08,
+     "brighterPct": 0.2,
+     "darkerPct": 0.0
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -5.69,
+     "hvDb": -11.13,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": -0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -5.81,
+     "hvDb": -11.3,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -7.28,
+     "hvDb": -13.44,
+     "deltaHhDb": -0.15,
+     "deltaHvDb": 0.06,
+     "brighterPct": 0.2,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -7.12,
+     "hvDb": -12.72,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": 0.09,
+     "brighterPct": 1.5,
+     "darkerPct": 0.2
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_029_151_D_073_2005_DHDH_A_20260904T162544_20260904T162618_P05023_N_F_J_002",
+   "acquired": "2026-09-04T16:25:44Z",
+   "track": 151,
+   "frame": 73,
+   "direction": "Descending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-08-23T16:25:44Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.15,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20260904-t151-f73-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20260904-t151-f73-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -10.92,
+     "hvDb": -18.64,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -4.21,
+     "hvDb": -12.36,
+     "deltaHhDb": 0.04,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -6.75,
+     "hvDb": -14.21,
+     "deltaHhDb": 0.03,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -1.21,
+     "hvDb": -8.74,
+     "deltaHhDb": -0.13,
+     "deltaHvDb": -0.17,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -2.07,
+     "hvDb": -8.84,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": -0.03,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.27,
+     "hvDb": -13.73,
+     "deltaHhDb": 0.11,
+     "deltaHvDb": 0.03,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -6.65,
+     "hvDb": -13.11,
+     "deltaHhDb": 0.04,
+     "deltaHvDb": 0.18,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -7.7,
+     "hvDb": -13.94,
+     "deltaHhDb": 0.03,
+     "deltaHvDb": 0.1,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -7.31,
+     "hvDb": -14.64,
+     "deltaHhDb": -0.08,
+     "deltaHvDb": 0.16,
+     "brighterPct": 0.2,
+     "darkerPct": 0.2
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.16,
+     "hvDb": -14.13,
+     "deltaHhDb": 0.14,
+     "deltaHvDb": 0.17,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.7,
+     "hvDb": -14.59,
+     "deltaHhDb": -0.07,
+     "deltaHvDb": 0.21,
+     "brighterPct": 0.3,
+     "darkerPct": 0.0
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -8.53,
+     "hvDb": -15.66,
+     "deltaHhDb": 0.14,
+     "deltaHvDb": 0.26,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -4.44,
+     "hvDb": -10.91,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": 0.06,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -4.72,
+     "hvDb": -11.07,
+     "deltaHhDb": -0.13,
+     "deltaHvDb": 0.11,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -6.3,
+     "hvDb": -12.96,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": 0.11,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -6.22,
+     "hvDb": -12.39,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": 0.04,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    }
+   }
+  },
+  {
+   "id": "NISAR_L2_PR_GCOV_029_100_A_017_2005_DHDH_A_20260901T025938_20260901T030012_P05023_N_F_J_001",
+   "acquired": "2026-09-01T02:59:38Z",
+   "track": 100,
+   "frame": 17,
+   "direction": "Ascending",
+   "polarization": "DHDH",
+   "previousAcquired": "2026-08-20T02:59:38Z",
+   "baselineDays": 12,
+   "sceneShiftDb": 0.01,
+   "images": {
+    "backscatter": {
+     "url": "/data/nisar/gaza/20260901-t100-f17-hh.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    },
+    "change": {
+     "url": "/data/nisar/gaza/20260901-t100-f17-change.png",
+     "corners": [
+      [
+       34.205744,
+       31.488937
+      ],
+      [
+       34.437949,
+       31.486539
+      ],
+      [
+       34.434527,
+       31.261584
+      ],
+      [
+       34.202874,
+       31.263961
+      ]
+     ]
+    }
+   },
+   "sectors": {
+    "GZ-01": {
+     "validPct": 100.0,
+     "hhDb": -12.5,
+     "hvDb": -19.58,
+     "deltaHhDb": -0.06,
+     "deltaHvDb": 0.05,
+     "brighterPct": 0.0,
+     "darkerPct": 0.2
+    },
+    "GZ-02": {
+     "validPct": 100.0,
+     "hhDb": -6.15,
+     "hvDb": -12.14,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-03": {
+     "validPct": 100.0,
+     "hhDb": -8.19,
+     "hvDb": -14.5,
+     "deltaHhDb": -0.03,
+     "deltaHvDb": -0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-04": {
+     "validPct": 100.0,
+     "hhDb": -3.65,
+     "hvDb": -8.79,
+     "deltaHhDb": 0.0,
+     "deltaHvDb": -0.11,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-05": {
+     "validPct": 100.0,
+     "hhDb": -3.63,
+     "hvDb": -8.87,
+     "deltaHhDb": 0.04,
+     "deltaHvDb": -0.15,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-06": {
+     "validPct": 100.0,
+     "hhDb": -7.45,
+     "hvDb": -14.25,
+     "deltaHhDb": -0.01,
+     "deltaHvDb": -0.02,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-07": {
+     "validPct": 100.0,
+     "hhDb": -7.37,
+     "hvDb": -13.6,
+     "deltaHhDb": -0.08,
+     "deltaHvDb": -0.03,
+     "brighterPct": 0.3,
+     "darkerPct": 0.0
+    },
+    "GZ-08": {
+     "validPct": 100.0,
+     "hhDb": -8.29,
+     "hvDb": -14.64,
+     "deltaHhDb": 0.05,
+     "deltaHvDb": -0.09,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-09": {
+     "validPct": 100.0,
+     "hhDb": -7.66,
+     "hvDb": -15.16,
+     "deltaHhDb": -0.11,
+     "deltaHvDb": -0.1,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-10": {
+     "validPct": 100.0,
+     "hhDb": -7.92,
+     "hvDb": -14.94,
+     "deltaHhDb": 0.01,
+     "deltaHvDb": -0.06,
+     "brighterPct": 0.6,
+     "darkerPct": 0.2
+    },
+    "GZ-11": {
+     "validPct": 100.0,
+     "hhDb": -7.99,
+     "hvDb": -15.48,
+     "deltaHhDb": 0.04,
+     "deltaHvDb": 0.02,
+     "brighterPct": 0.2,
+     "darkerPct": 0.1
+    },
+    "GZ-12": {
+     "validPct": 100.0,
+     "hhDb": -10.22,
+     "hvDb": -16.38,
+     "deltaHhDb": 0.05,
+     "deltaHvDb": -0.08,
+     "brighterPct": 0.1,
+     "darkerPct": 0.0
+    },
+    "GZ-13": {
+     "validPct": 100.0,
+     "hhDb": -5.52,
+     "hvDb": -11.23,
+     "deltaHhDb": -0.05,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.0
+    },
+    "GZ-14": {
+     "validPct": 100.0,
+     "hhDb": -5.84,
+     "hvDb": -11.23,
+     "deltaHhDb": -0.04,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    },
+    "GZ-15": {
+     "validPct": 100.0,
+     "hhDb": -7.17,
+     "hvDb": -13.48,
+     "deltaHhDb": 0.02,
+     "deltaHvDb": -0.07,
+     "brighterPct": 0.0,
+     "darkerPct": 0.4
+    },
+    "GZ-16": {
+     "validPct": 100.0,
+     "hhDb": -7.01,
+     "hvDb": -12.71,
+     "deltaHhDb": -0.02,
+     "deltaHvDb": -0.08,
+     "brighterPct": 0.0,
+     "darkerPct": 0.1
+    }
+   }
+  }
+ ]
+}
