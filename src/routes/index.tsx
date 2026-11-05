@@ -5,7 +5,8 @@ import { Check } from "lucide-react";
 import { useMemo } from "react";
 import { useRegion } from "@/lib/useRegion";
 import { fmtNum, fmtTime, useStore } from "@/lib/store";
-import { displacementSeries, sarPasses } from "@/data/generators/timeseries";
+import { displacementSeries } from "@/data/generators/timeseries";
+import { useNisarAnalysis } from "@/lib/useNisar";
 import { CHART, Kpi, PageHeader, Panel, RiskPill, SeverityPill, SimBadge } from "@/components/ui-kit";
 import { LazyMap } from "@/components/map/LazyMap";
 import { decodeLayers } from "@/components/map/layers";
@@ -38,10 +39,11 @@ function Overview() {
   const shelters = sectors.reduce((a, s) => a + s.shelterUnits, 0);
   const active = alerts.filter((a) => a.status !== "Resolved");
   const top = active.filter((a) => a.severity !== "Advisory").slice(0, 5);
-  const lastPass = sarPasses().at(-1)!;
+  const { passes: nisarPasses } = useNisarAnalysis(region);
+  const lastPass = nisarPasses.at(-1)?.acquired;
 
   const freshness = [
-    { k: "SAR pass", t: lastPass },
+    { k: "NISAR pass", t: lastPass },
     { k: "Forecast run", t: new Date(REF_DATE.getTime() - 3 * 3600e3).toISOString() },
     { k: "DTM/SMC baseline", t: new Date(REF_DATE.getTime() - 4 * 86400e3).toISOString() },
   ];
@@ -60,7 +62,7 @@ function Overview() {
             {freshness.map((f) => (
               <li key={f.k} className="flex justify-between gap-2">
                 <span className="text-muted-foreground">{t(f.k)}</span>
-                <span className="num">{t(fmtTime(f.t, timezone, true, locale))}</span>
+                <span className="num">{f.t ? t(fmtTime(f.t, timezone, true, locale)) : "—"}</span>
               </li>
             ))}
           </ul>
@@ -70,7 +72,7 @@ function Overview() {
       <div className="mt-4 grid gap-4 lg:grid-cols-5">
         <Panel title={t("High-risk sectors")} className="flex min-w-0 flex-col lg:col-span-3" bodyClass="flex min-h-[380px] flex-1 flex-col p-0" right={<Link to="/map" className="text-xs text-primary">{t("Open map →")}</Link>}>
           <div className="relative min-h-[380px] flex-1 overflow-hidden rounded-b-md">
-            <LazyMap region={region} scores={scores} layers={MINI_LAYERS} pass={11} />
+            <LazyMap region={region} scores={scores} layers={MINI_LAYERS} />
           </div>
         </Panel>
         <div className="space-y-4 lg:col-span-2">

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import type { RegionId } from "@/data/generators/regions";
 import { fetchScenes, loadSceneImage, NisarPlacementError } from "./nisar";
+import { fetchAnalysis } from "./nisarAnalysis";
 
 const HOUR = 3600e3;
 
@@ -36,5 +37,21 @@ export function useNisar(region: RegionId, enabled: boolean) {
     image: image.data ?? null,
     loading: scenes.isFetching || image.isFetching,
     error: scenes.error ?? image.error,
+  };
+}
+
+/** Real per-sector measurements. Loaded client-side so SSR output stays deterministic. */
+export function useNisarAnalysis(region: RegionId) {
+  const query = useQuery({
+    queryKey: ["nisar-analysis", region],
+    queryFn: ({ signal }) => fetchAnalysis(region, signal),
+    staleTime: HOUR,
+    retry: 1,
+  });
+  return {
+    analysis: query.data ?? null,
+    passes: query.data?.passes ?? [],
+    loading: query.isPending,
+    error: query.error,
   };
 }

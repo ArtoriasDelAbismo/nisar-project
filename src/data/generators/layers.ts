@@ -39,34 +39,6 @@ export function centroidsGeo(region: RegionId, scores: SectorScore[]): FC {
   };
 }
 
-/** SAR change cells: 4 sub-cells per sector with signed change per pass. */
-export function sarChangeGeo(region: RegionId, pass: number): FC {
-  const sectors = generateSectors(region);
-  const d = region === "gaza" ? 0.0028 : 0.016;
-  const feats: GeoJSON.Feature[] = [];
-  sectors.forEach((s) => {
-    const r = rng(`sar-${s.id}`);
-    for (let k = 0; k < 4; k++) {
-      const ox = ((k % 2) - 0.5) * d * 1.1 + (r() - 0.5) * d * 0.3;
-      const oy = (Math.floor(k / 2) - 0.5) * d * 1.1 + (r() - 0.5) * d * 0.3;
-      const cx = s.centroid[0] + ox;
-      const cy = s.centroid[1] + oy;
-      const jitter = rng(`sar-${s.id}-${k}-${pass}`)();
-      const change = round((s.sarTrend[pass] ?? 0) + (jitter - 0.5) * 6, 1);
-      const h = d * 0.42;
-      feats.push({
-        type: "Feature",
-        properties: { change, sector: s.name },
-        geometry: {
-          type: "Polygon",
-          coordinates: [[[cx - h, cy - h], [cx + h, cy - h], [cx + h, cy + h], [cx - h, cy + h], [cx - h, cy - h]]],
-        },
-      });
-    }
-  });
-  return { type: "FeatureCollection", features: feats };
-}
-
 /** Drainage / flood accumulation corridors (HAND < 2 m proxy). */
 export function drainageGeo(region: RegionId): FC {
   const r = rng(`drain-${region}`);

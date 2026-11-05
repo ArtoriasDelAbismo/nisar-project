@@ -3,7 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Download } from "lucide-react";
 import { useRegion } from "@/lib/useRegion";
 import { fmtNum } from "@/lib/store";
-import { sarPasses } from "@/data/generators/timeseries";
+import { useNisarAnalysis } from "@/lib/useNisar";
+import { changeEvents } from "@/lib/nisarAnalysis";
 import { FACILITY_LABEL } from "@/data/generators/facilities";
 import { downloadCsv, Kpi, PageHeader, Panel, RiskPill, SimBadge } from "@/components/ui-kit";
 import { Button } from "@/components/ui/button";
@@ -31,18 +32,9 @@ const STATUS_CLASS = {
 
 function Sites() {
   const { t, date, locale } = useI18n();
-  const { meta, scores, facilities, sectors } = useRegion();
-  const passes = sarPasses();
-  const changelog = passes
-    .slice(-6)
-    .reverse()
-    .flatMap((p, k) => {
-      const i = passes.length - 1 - k;
-      return sectors
-        .filter((s) => Math.abs(s.sarTrend[i] ?? 0) > 2.2)
-        .map((s) => ({ date: p, sector: s.name, id: s.id, change: s.sarTrend[i] ?? 0 }));
-    })
-    .slice(0, 14);
+  const { region, meta, scores, facilities, sectors } = useRegion();
+  const { passes: nisarPasses, loading: nisarLoading } = useNisarAnalysis(region);
+  const changelog = changeEvents(nisarPasses, sectors).slice(0, 14);
 
   const exportCsv = () =>
     downloadCsv(
@@ -100,18 +92,20 @@ function Sites() {
       </Panel>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-5">
-        <Panel title={t("SAR structure monitoring changelog")} className="lg:col-span-2" bodyClass="p-0">
+        <Panel title={t("NISAR radar change log")} className="lg:col-span-2" bodyClass="p-0">
           <ul className="divide-y text-sm">
             {changelog.map((c) => (
-              <li key={c.date + c.id} className="flex items-center gap-3 px-4 py-2">
+              <li key={c.date + c.sectorId} className="flex items-center gap-3 px-4 py-2">
                 <span className="w-14 text-xs text-muted-foreground num">{t(date(new Date(c.date), "dd MMM"))}</span>
                 <span className="flex-1 truncate">{t(c.sector)}</span>
-                <span className={cn("text-xs num", c.change > 0 ? "text-chart-5" : "text-risk-crit")}>
-                  {c.change > 0 ? "▲ +" : "▼ "}{t(c.change)}{t("%")} {c.change > 0 ? "expansion" : "removal"}
+                <span className="text-xs text-muted-foreground num">
+                  ▲ {t(c.brighterPct)}{t("%")} ▼ {t(c.darkerPct)}{t("%")}
                 </span>
               </li>
             ))}
           </ul>
+          {changelog.length === 0 && <p className="px-4 py-3 text-xs text-muted-foreground">{t(nisarLoading ? "Loading NISAR measurements…" : "No sector exceeded the change threshold.")}</p>}
+          <p className="border-t px-4 py-2 text-[11px] text-muted-foreground">{t("Real NISAR measurements: share of each sector that got brighter (▲) or darker (▼) by 3 dB or more since the previous pass. This is a prompt for review, not confirmed structure change.")}</p>
         </Panel>
         <Panel title={t("Facilities matrix")} className="lg:col-span-3" bodyClass="p-0 max-h-[440px] overflow-y-auto">
           <table className="w-full text-sm">

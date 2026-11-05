@@ -1,4 +1,4 @@
-export const LAYER_KEYS = ["sectors", "sar", "drainage", "terrain", "facilities", "hazard", "nisar"] as const;
+export const LAYER_KEYS = ["sectors", "sar", "drainage", "terrain", "facilities", "hazard", "nisar", "radar"] as const;
 export type LayerKey = (typeof LAYER_KEYS)[number];
 export interface LayerState {
   on: boolean;
@@ -6,15 +6,19 @@ export interface LayerState {
 }
 export const LAYER_LABELS: Record<LayerKey, string> = {
   sectors: "Sector density & population",
-  sar: "NISAR SAR change detection",
+  sar: "NISAR radar change",
   drainage: "Drainage corridors (HAND < 2 m)",
   terrain: "Slope & elevation classes",
   facilities: "Critical service nodes",
   hazard: "Hazard severity heat",
-  nisar: "NISAR radar imagery",
+  nisar: "NISAR wide-area quick look",
+  radar: "NISAR radar image (20 m)",
 };
 
-export const DEFAULT_ON: LayerKey[] = ["sectors", "facilities", "hazard"];
+/** Layers showing real satellite data rather than simulation. */
+export const REAL_LAYERS: LayerKey[] = ["radar", "sar", "nisar"];
+
+export const DEFAULT_ON: LayerKey[] = ["radar", "sar", "sectors", "facilities"];
 
 export function decodeLayers(on?: string, op?: string): Record<LayerKey, LayerState> {
   const active = on != null ? on.split(",").filter(Boolean) : DEFAULT_ON;

@@ -3,8 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { Bar, BarChart, CartesianGrid, Cell, ComposedChart, Legend, Line, Pie, PieChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useRegion } from "@/lib/useRegion";
+import { useNisarAnalysis } from "@/lib/useNisar";
+import { regionChangeSeries } from "@/lib/nisarAnalysis";
 import { fmtNum } from "@/lib/store";
-import { demographics, discrepancySeries, monthlyTimeline } from "@/data/generators/timeseries";
+import { demographics, monthlyTimeline } from "@/data/generators/timeseries";
 import { CHART, PageHeader, Panel, SimBadge } from "@/components/ui-kit";
 
 export const Route = createFileRoute("/demographics")({
@@ -26,7 +28,8 @@ function Demographics() {
   const { region, meta, sectors } = useRegion();
   const timeline = useMemo(() => monthlyTimeline(region), [region]);
   const demo = useMemo(() => demographics(region), [region]);
-  const disc = useMemo(() => discrepancySeries(region), [region]);
+  const { passes: nisarPasses } = useNisarAnalysis(region);
+  const radarChange = useMemo(() => regionChangeSeries(nisarPasses), [nisarPasses]);
   const typology = meta.shelterTypes.map((t) => ({
     name: t,
     value: sectors.reduce((a, s) => a + (s.population * (s.shelterMix[t] ?? 0)) / 100, 0),
@@ -94,22 +97,21 @@ function Demographics() {
             </div>
           </div>
         </Panel>
-        <Panel title={t("Discrepancy: SAR footprint vs registered headcount")}>
+        <Panel title={t("NISAR radar change by pass")}>
           <div className="h-56">
             <ResponsiveContainer>
-              <ComposedChart data={disc}>
+              <BarChart data={radarChange}>
                 <CartesianGrid stroke={CHART.grid} strokeDasharray="2 4" vertical={false} />
                 <XAxis dataKey="date" tick={CHART.tick} tickFormatter={(d) => date(new Date(d), "dd MMM")} />
                 <YAxis tick={CHART.tick} unit="%" />
                 <Tooltip {...CHART.tooltip} labelFormatter={(d) => date(new Date(d), "dd MMM")} />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
-                <Bar dataKey="gap" name={t("Gap (unregistered proxy)")} fill="var(--chart-3)" opacity={0.6} />
-                <Line dataKey="sarFootprint" name={t("SAR footprint growth")} stroke="var(--chart-5)" dot={false} strokeWidth={2} />
-                <Line dataKey="registered" name={t("Registered headcount growth")} stroke="var(--chart-1)" dot={false} strokeWidth={2} />
-              </ComposedChart>
+                <Bar dataKey="brighter" stackId="change" name={t("Brighter")} fill="#2171b5" />
+                <Bar dataKey="darker" stackId="change" name={t("Darker")} fill="#e66101" />
+              </BarChart>
             </ResponsiveContainer>
           </div>
-          <p className="mt-2 text-xs text-muted-foreground">{t("A widening gap may indicate unregistered arrivals or densification not yet captured by registration rounds.")}</p>
+          <p className="mt-2 text-xs text-muted-foreground">{t("Real NISAR measurements: average share of sector area that changed by 3 dB or more since the previous pass. Values under about 0.5% are consistent with radar noise.")}</p>
         </Panel>
       </div>
     </div>

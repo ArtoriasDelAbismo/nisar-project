@@ -9,11 +9,11 @@ import {
   centroidsGeo,
   drainageGeo,
   facilitiesGeo,
-  sarChangeGeo,
   sectorsGeo,
   terrainGeo,
 } from "@/data/generators/layers";
 import type { NisarImage } from "@/lib/nisar";
+import type { MapImage } from "@/lib/nisarAnalysis";
 import type { SectorScore } from "@/lib/scoring";
 import { LAYER_KEYS, type LayerKey, type LayerState } from "./layers";
 
@@ -34,8 +34,9 @@ interface Props {
   region: RegionId;
   scores: SectorScore[];
   layers: Record<LayerKey, LayerState>;
-  pass: number;
   nisar?: NisarImage | null | undefined;
+  radar?: MapImage | null | undefined;
+  change?: MapImage | null | undefined;
   basemap?: keyof typeof BASEMAPS | undefined;
   interactive?: boolean | undefined;
   selectedId?: string | null | undefined;
@@ -46,23 +47,43 @@ interface Props {
   mapRef?: React.MutableRefObject<maplibregl.Map | null> | undefined;
 }
 
+/** Image layers bottom to top: wide context, then detail, then change. All sit under sector outlines. */
+const IMAGE_LAYERS = ["nisar-raster", "radar-raster", "sar-change"];
+
+function addImageLayer(map: maplibregl.Map, id: string, source: string) {
+  if (map.getLayer(id)) return;
+  const above = IMAGE_LAYERS.slice(IMAGE_LAYERS.indexOf(id) + 1).find((l) => map.getLayer(l));
+  map.addLayer({ id, type: "raster", source, paint: { "raster-fade-duration": 0 } }, above ?? "sectors-line");
+}
+
+function removeImage(map: maplibregl.Map, id: string, source: string) {
+  if (map.getLayer(id)) map.removeLayer(id);
+  if (map.getSource(source)) map.removeSource(source);
+}
+
+function syncMapImage(map: maplibregl.Map, id: string, source: string, image: MapImage | null | undefined) {
+  if (!image) return removeImage(map, id, source);
+  const existing = map.getSource(source) as maplibregl.ImageSource | undefined;
+  if (!existing) map.addSource(source, { type: "image", url: image.url, coordinates: image.corners });
+  else if (existing.url !== image.url) existing.updateImage({ url: image.url, coordinates: image.corners });
+  addImageLayer(map, id, source);
+}
+
 function syncNisar(map: maplibregl.Map, nisar: NisarImage | null | undefined) {
-  if (!nisar) {
-    if (map.getLayer("nisar-raster")) map.removeLayer("nisar-raster");
-    if (map.getSource("nisar")) map.removeSource("nisar");
-    return;
-  }
-  if (!map.getSource("nisar")) {
-    map.addSource("nisar", { type: "image", coordinates: nisar.corners });
-  }
+  if (!nisar) return removeImage(map, "nisar-raster", "nisar");
+  if (!map.getSource("nisar")) map.addSource("nisar", { type: "image", coordinates: nisar.corners });
   (map.getSource("nisar") as maplibregl.ImageSource).updateImage({ image: nisar.image, coordinates: nisar.corners });
-  if (!map.getLayer("nisar-raster")) {
-    map.addLayer({ id: "nisar-raster", type: "raster", source: "nisar", paint: { "raster-fade-duration": 0 } }, "sectors-line");
-  }
+  addImageLayer(map, "nisar-raster", "nisar");
+}
+
+function syncImages(map: maplibregl.Map, p: Props) {
+  syncNisar(map, p.nisar);
+  syncMapImage(map, "radar-raster", "radar", p.radar);
+  syncMapImage(map, "sar-change", "sar", p.change);
 }
 
 function install(map: maplibregl.Map, p: Props) {
-  const { region, scores, pass } = p;
+  const { region, scores } = p;
   const add = (id: string, data: GeoJSON.FeatureCollection) => {
     const src = map.getSource(id) as maplibregl.GeoJSONSource | undefined;
     if (src) src.setData(data);
@@ -71,7 +92,6 @@ function install(map: maplibregl.Map, p: Props) {
   add("terrain", terrainGeo(region));
   add("sectors", sectorsGeo(region, scores));
   add("centroids", centroidsGeo(region, scores));
-  add("sar", sarChangeGeo(region, pass));
   add("drainage", drainageGeo(region));
   add("facilities", facilitiesGeo(region));
 
@@ -82,32 +102,33 @@ function install(map: maplibregl.Map, p: Props) {
   L({ id: "sectors-fill", type: "fill", source: "sectors", paint: { "fill-color": DENSITY_RAMP as never, "fill-opacity": 0.55 } });
   L({ id: "sectors-line", type: "line", source: "sectors", paint: { "line-color": "#94a3b8", "line-width": ["case", ["boolean", ["feature-state", "selected"], false], 3, 1] as never } });
   L({ id: "drainage-line", type: "line", source: "drainage", layout: { "line-cap": "round" }, paint: { "line-color": "#9a9a9a", "line-width": region === "gaza" ? 14 : 10, "line-opacity": 0.35, "line-blur": 4 } });
-  L({ id: "sar-fill", type: "fill", source: "sar", paint: { "fill-color": ["interpolate", ["linear"], ["get", "change"], -6, "#b2182b", -2, "#d6604d", 0, "#f7f7f7", 2, "#8a8a8a", 6, "#4a4a4a"] as never, "fill-opacity": 0.75 } });
   L({ id: "hazard-heat", type: "heatmap", source: "centroids", paint: { "heatmap-weight": ["/", ["get", "risk"], 100] as never, "heatmap-radius": region === "gaza" ? 60 : 45, "heatmap-intensity": 1.2, "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(0,0,0,0)", 0.2, "#9a9a9a", 0.45, "#e9a23b", 0.7, "#d7263d", 1, "#7b2cbf"] as never, "heatmap-opacity": 0.6 } });
   L({ id: "risk-outline", type: "line", source: "sectors", paint: { "line-color": RISK_RAMP as never, "line-width": 2.5 } });
   L({ id: "facilities-pt", type: "circle", source: "facilities", paint: { "circle-radius": 4.5, "circle-stroke-width": 1.2, "circle-stroke-color": "#000000", "circle-color": ["match", ["get", "type"], "medical", "#f472b6", "water", "#38bdf8", "heating", "#fb923c", "food", "#a3e635", "cooling", "#67e8f9", "#e2e8f0"] as never } });
   L({ id: "sector-labels", type: "symbol", source: "centroids", layout: { "text-field": ["get", "label"], "text-size": 10, "text-font": ["Open Sans Regular"] as never, "text-allow-overlap": false }, paint: { "text-color": "#e2e8f0", "text-halo-color": "#020617", "text-halo-width": 1.2 } });
-  syncNisar(map, p.nisar);
+  syncImages(map, p);
   applyVisibility(map, p.layers);
 }
 
 const LAYER_IDS: Record<LayerKey, string[]> = {
   sectors: ["sectors-fill", "sectors-line", "sector-labels", "risk-outline"],
-  sar: ["sar-fill"],
+  sar: ["sar-change"],
   drainage: ["drainage-line"],
   terrain: ["terrain-fill"],
   facilities: ["facilities-pt"],
   hazard: ["hazard-heat"],
   nisar: ["nisar-raster"],
+  radar: ["radar-raster"],
 };
 const OPACITY_PROP: Record<string, [string, number]> = {
   "sectors-fill": ["fill-opacity", 0.7],
-  "sar-fill": ["fill-opacity", 0.85],
+  "sar-change": ["raster-opacity", 1],
   "drainage-line": ["line-opacity", 0.5],
   "terrain-fill": ["fill-opacity", 0.7],
   "facilities-pt": ["circle-opacity", 1],
   "hazard-heat": ["heatmap-opacity", 0.85],
   "nisar-raster": ["raster-opacity", 1],
+  "radar-raster": ["raster-opacity", 1],
 };
 
 function applyVisibility(map: maplibregl.Map, layers: Props["layers"]) {
@@ -192,15 +213,15 @@ export default function MapView(p: Props) {
     const m = map.current;
     if (m?.isStyleLoaded() && m.getSource("sectors")) install(m, p);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [p.scores, p.pass]);
+  }, [p.scores]);
 
   useEffect(() => {
     const m = map.current;
     // Not isStyleLoaded(): it stays false while tiles load. style.load's install covers a pending style.
     if (!m?.getLayer("sectors-line")) return;
-    syncNisar(m, p.nisar);
+    syncImages(m, p);
     applyVisibility(m, props.current.layers);
-  }, [p.nisar]);
+  }, [p.nisar, p.radar, p.change]);
 
   useEffect(() => {
     const m = map.current;

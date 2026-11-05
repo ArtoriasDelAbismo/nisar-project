@@ -6,12 +6,12 @@ import type * as maplibregl from "maplibre-gl";
 import { ChevronLeft, ChevronRight, Columns2, Search, X } from "lucide-react";
 import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from "recharts";
 import { LazyMap } from "@/components/map/LazyMap";
-import { decodeLayers, encodeLayers, LAYER_KEYS, LAYER_LABELS, type LayerKey } from "@/components/map/layers";
+import { decodeLayers, encodeLayers, LAYER_KEYS, LAYER_LABELS, REAL_LAYERS, type LayerKey } from "@/components/map/layers";
 import { useRegion } from "@/lib/useRegion";
-import { useNisar } from "@/lib/useNisar";
+import { useNisar, useNisarAnalysis } from "@/lib/useNisar";
+import { changedShare, previousPassIndex, type NisarPass } from "@/lib/nisarAnalysis";
 import { NisarPlacementError } from "@/lib/nisar";
 import { fmtNum, useStore } from "@/lib/store";
-import { sarPasses } from "@/data/generators/timeseries";
 import { sampleElevation } from "@/data/generators/layers";
 import { CHART, RiskPill, SimBadge } from "@/components/ui-kit";
 import { Switch } from "@/components/ui/switch";
@@ -81,9 +81,11 @@ function MapExplorer() {
   const sp = Route.useSearch();
   const nav = useNavigate({ from: "/map" });
   const { region, scores, facilities, meta } = useRegion();
-  const passes = sarPasses();
+  const { passes, error: analysisError } = useNisarAnalysis(region);
   const layers = useMemo(() => decodeLayers(sp.layers, sp.op), [sp.layers, sp.op]);
-  const pass = sp.pass ?? 11;
+  const lastPass = Math.max(0, passes.length - 1);
+  const pass = Math.min(sp.pass ?? lastPass, lastPass);
+  const current = passes[pass];
   const nisar = useNisar(region, layers.nisar.on);
   const [panel, setPanel] = useState(true);
   const [compare, setCompare] = useState(false);
@@ -98,6 +100,16 @@ function MapExplorer() {
     const next = { ...layers, [k]: { ...layers[k], ...patch } };
     nav({ search: (p) => ({ ...p, ...encodeLayers(next) }), replace: true });
   };
+  const passLabel = (p: NisarPass) =>
+    [
+      t(p.direction),
+      `${t("Track")} ${p.track}`,
+      p.baselineDays == null ? t("no reliable earlier pass to compare") : `${p.baselineDays} ${t("days since previous pass")}`,
+    ].join(" · ");
+  const sectorChange = useMemo(
+    () => passes.map((p) => ({ label: date(new Date(p.acquired), "dd MMM yyyy"), v: selected ? changedShare(p.sectors[selected.sector.id]) : null })),
+    [passes, selected, date],
+  );
   const select = (id: string | null) => nav({ search: (p) => ({ ...p, sector: id ?? undefined }), replace: true });
 
   const results = q.length > 1
@@ -108,21 +120,22 @@ function MapExplorer() {
     : [];
 
   const compareLayers = useMemo(() => ({ ...layers, sar: { on: true, opacity: layers.sar.opacity } }), [layers]);
-  const comparePass = Math.max(0, pass - 1);
+  const comparePass = previousPassIndex(passes, pass);
+  const earlier = passes[comparePass];
 
   return (
     <div className="relative h-full overflow-hidden">
       <div className="absolute inset-0">
-        <LazyMap region={region} scores={scores} layers={compare ? compareLayers : layers} pass={pass} nisar={nisar.image} basemap={sp.base} selectedId={sp.sector} onSelect={select} onPointer={setCursor} flyTo={fly} mapRef={primary} />
+        <LazyMap region={region} scores={scores} layers={compare ? compareLayers : layers} nisar={nisar.image} radar={current?.images.backscatter} change={current?.images.change} basemap={sp.base} selectedId={sp.sector} onSelect={select} onPointer={setCursor} flyTo={fly} mapRef={primary} />
       </div>
       {compare && (
         <>
           <div className="pointer-events-none absolute inset-0" style={{ clipPath: `inset(0 ${100 - swipe}% 0 0)` }}>
-            <LazyMap region={region} scores={scores} layers={compareLayers} pass={comparePass} nisar={nisar.image} basemap={sp.base} interactive={false} syncWith={primary} />
+            <LazyMap region={region} scores={scores} layers={compareLayers} nisar={nisar.image} radar={earlier?.images.backscatter} change={earlier?.images.change} basemap={sp.base} interactive={false} syncWith={primary} />
           </div>
           <div className="pointer-events-none absolute inset-y-0 w-0.5 bg-primary" style={{ left: `${swipe}%` }}>
-            <span className="absolute top-3 -translate-x-full whitespace-nowrap rounded-s bg-primary px-2 py-0.5 text-[10px] text-primary-foreground num">{t(date(new Date(passes[comparePass]!), "dd MMM"))}</span>
-            <span className="absolute top-3 whitespace-nowrap rounded-e bg-card px-2 py-0.5 text-[10px] num">{t(date(new Date(passes[pass]!), "dd MMM"))}</span>
+            <span className="absolute top-3 -translate-x-full whitespace-nowrap rounded-s bg-primary px-2 py-0.5 text-[10px] text-primary-foreground num">{earlier && t(date(new Date(earlier.acquired), "dd MMM"))}</span>
+            <span className="absolute top-3 whitespace-nowrap rounded-e bg-card px-2 py-0.5 text-[10px] num">{current && t(date(new Date(current.acquired), "dd MMM"))}</span>
           </div>
           <input type="range" min={0} max={100} value={swipe} onChange={(e) => setSwipe(Number(e.target.value))} aria-label={t("Swipe compare")} className="absolute inset-x-0 top-1/2 z-10 mx-auto w-full cursor-ew-resize opacity-0" />
         </>
@@ -160,7 +173,7 @@ function MapExplorer() {
               <label className="flex items-center justify-between gap-2 text-sm">
                 <span className="flex items-center gap-1.5">
                   {t(LAYER_LABELS[k])}
-                  {k === "nisar" && <span className="rounded-sm border border-risk-low/50 bg-risk-low/10 px-1 text-[9px] font-semibold tracking-wider text-risk-low">{t("LIVE")}</span>}
+                  {REAL_LAYERS.includes(k) && <span className="rounded-sm border border-risk-low/50 bg-risk-low/10 px-1 text-[9px] font-semibold tracking-wider text-risk-low">{t("REAL")}</span>}
                 </span>
                 <Switch checked={layers[k].on} onCheckedChange={(v) => update(k, { on: v })} />
               </label>
@@ -178,6 +191,7 @@ function MapExplorer() {
             ))}
           </div>
           <Legend />
+          <p className="text-[11px] text-muted-foreground">{t("Layers marked REAL are NISAR satellite data. Sectors, population and facilities are simulated.")}</p>
         </div>
       </aside>
       <button onClick={() => setPanel(!panel)} className="absolute top-16 z-30 rounded-e border bg-card p-1" style={{ left: panel ? "19.75rem" : 0 }} aria-label={t("Toggle layer panel")}>
@@ -222,13 +236,13 @@ function MapExplorer() {
               </ul>
             </div>
             <div>
-              <div className="mb-1 text-xs text-muted-foreground">{t("SAR footprint change per pass (%)")}</div>
+              <div className="mb-1 text-xs text-muted-foreground">{t("Area changed per pass (%)")}</div>
               <div className="h-20">
                 <ResponsiveContainer>
-                  <LineChart data={selected.sector.sarTrend.map((v, i) => ({ i, v }))}>
+                  <LineChart data={sectorChange}>
                     <YAxis hide />
-                    <Tooltip {...CHART.tooltip} />
-                    <Line dataKey="v" stroke="var(--primary)" dot={false} strokeWidth={1.5} />
+                    <Tooltip {...CHART.tooltip} labelFormatter={(_, items) => items[0]?.payload?.label ?? ""} />
+                    <Line dataKey="v" name={t("Area changed (%)")} stroke="var(--primary)" dot connectNulls strokeWidth={1.5} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -242,9 +256,10 @@ function MapExplorer() {
         <div className="flex items-center gap-4">
           <span className="text-[11px] uppercase tracking-wider text-muted-foreground">{t("SAR pass")}</span>
           <div className="flex flex-1 gap-1">
+            {passes.length === 0 && <span className="py-1 text-[11px] text-muted-foreground">{t(analysisError ? "NISAR measurements are unavailable." : "Loading NISAR measurements…")}</span>}
             {passes.map((p, i) => (
-              <button key={p} onClick={() => nav({ search: (s) => ({ ...s, pass: i }), replace: true })} className={cn("flex-1 rounded-sm py-1 text-[10px] num transition-colors", i === pass ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent")}>
-                {t(date(new Date(p), "dd MMM"))}
+              <button key={p.id} title={passLabel(p)} onClick={() => nav({ search: (s) => ({ ...s, pass: i }), replace: true })} className={cn("flex-1 rounded-sm py-1 text-[10px] num transition-colors", i === pass ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent")}>
+                {t(date(new Date(p.acquired), "dd MMM"))}
               </button>
             ))}
           </div>
@@ -254,7 +269,7 @@ function MapExplorer() {
         </div>
         <div className="mt-1.5 flex justify-between text-[10px] text-muted-foreground num">
           <span>{cursor ? `${cursor.lat.toFixed(5)}°N ${cursor.lng.toFixed(5)}°E · elev ≈ ${sampleElevation(region, cursor.lng, cursor.lat)} m` : "move cursor over map to inspect"}</span>
-          <span>{t(meta.short)} {t("· 12-day repeat cycle")}</span>
+          <span>{current ? passLabel(current) : t(meta.short)}</span>
         </div>
       </div>
     </div>
@@ -265,7 +280,7 @@ function Legend() {
   const { t, date, locale } = useI18n();
   const rows = [
     ["Risk", ["#9a9a9a", "#e9a23b", "#d7263d", "#7b2cbf"], ["Low", "Warn", "Crit", "Extr"]],
-    ["SAR Δ", ["#b2182b", "#d6604d", "#f7f7f7", "#8a8a8a", "#4a4a4a"], ["Removal", "", "", "", "Expansion"]],
+    ["Radar", ["#e66101", "#f4b183", "#9ecae1", "#2171b5"], ["Darker", "", "", "Brighter"]],
     ["Elev", ["#e8e8e8", "#b0b0b0", "#7a7a7a", "#4a4a4a", "#1c1c1c"], ["Low", "", "", "", "High"]],
   ] as const;
   return (

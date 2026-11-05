@@ -18,7 +18,6 @@ export interface Sector {
   materialVuln: number; // 0..1
   elderlyShare: number; // 0..1 (60+)
   coastalExposure: number; // 0..1
-  sarTrend: number[]; // % change in detected structure footprint per pass (12)
   delta30: number; // 30-day population change
 }
 
@@ -101,7 +100,6 @@ export function generateSectors(region: RegionId): Sector[] {
           materialVuln: round(0.65 + r() * 0.3, 2),
           elderlyShare: round(0.05 + r() * 0.06, 3),
           coastalExposure: round(clamp(1 - col * 0.35 + r() * 0.1), 2),
-          sarTrend: [],
           delta30: 0,
         });
       }
@@ -136,7 +134,6 @@ export function generateSectors(region: RegionId): Sector[] {
         materialVuln: round(c.name.includes("Modular") ? 0.75 + r() * 0.15 : 0.3 + r() * 0.35, 2),
         elderlyShare: round(0.14 + r() * 0.14, 3),
         coastalExposure: round(0.2 + r() * 0.4, 2),
-        sarTrend: [],
         delta30: 0,
       });
     });
@@ -149,11 +146,6 @@ export function generateSectors(region: RegionId): Sector[] {
 
   out.forEach((s) => {
     s.density = Math.round(s.population / s.areaKm2);
-    let v = (r() - 0.4) * 4;
-    s.sarTrend = Array.from({ length: 12 }, () => {
-      v = v * 0.6 + (r() - 0.42) * 5;
-      return round(v, 1);
-    });
     s.delta30 = Math.round(s.population * ((r() - 0.35) * 0.08));
   });
 

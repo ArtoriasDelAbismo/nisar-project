@@ -3,15 +3,6 @@ import { rng, round, REF_DATE } from "./prng";
 import { REGIONS, type RegionId } from "./regions";
 import { generateSectors } from "./sectors";
 
-const SAR_REPEAT_DAYS = 12;
-
-/** 12 SAR acquisition passes on a 12-day repeat cycle ending at the reference date. */
-export function sarPasses(): string[] {
-  return Array.from({ length: 12 }, (_, i) =>
-    subDays(REF_DATE, (11 - i) * SAR_REPEAT_DAYS).toISOString(),
-  );
-}
-
 export interface DisplacementDay {
   date: string;
   arrivals: number;
@@ -67,20 +58,5 @@ export function demographics(region: RegionId) {
     const n = meta.totalDisplaced * shares[i]!;
     const f = region === "lviv" && i >= 3 ? 0.58 + r() * 0.06 : 0.49 + r() * 0.03;
     return { bracket: b, female: Math.round(n * f), male: -Math.round(n * (1 - f)) };
-  });
-}
-
-/** SAR footprint growth (%) vs registered headcount growth (%) per pass. */
-export function discrepancySeries(region: RegionId) {
-  const sectors = generateSectors(region);
-  const passes = sarPasses();
-  const r = rng(`disc-${region}`);
-  let sar = 0;
-  let reg = 0;
-  return passes.map((p, i) => {
-    const avg = sectors.reduce((a, s) => a + (s.sarTrend[i] ?? 0), 0) / sectors.length;
-    sar += avg;
-    reg += avg * (0.55 + r() * 0.4);
-    return { date: p, sarFootprint: round(sar, 1), registered: round(reg, 1), gap: round(sar - reg, 1) };
   });
 }
