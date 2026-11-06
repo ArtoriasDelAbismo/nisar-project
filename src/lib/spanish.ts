@@ -212,7 +212,7 @@ export const SPANISH: Record<string, string> = {
   "Varies (mostly CC BY)": "Variable (mayormente CC BY)",
   "IOM terms": "Términos OIM",
   "UNHCR terms": "Términos ACNUR",
-  "Data ethics: Camp Sentinel displays aggregated sector and cluster polygons only. It never renders pinpoint coordinates of individual shelters or households.": "Ética de datos: Camp Sentinel solo muestra polígonos agregados de sectores y agrupaciones. Nunca muestra coordenadas exactas de refugios u hogares individuales.",
+  "Data ethics: NISAR project displays aggregated sector and cluster polygons only. It never renders pinpoint coordinates of individual shelters or households.": "Ética de datos: El proyecto NISAR solo muestra polígonos agregados de sectores y agrupaciones. Nunca muestra coordenadas exactas de refugios u hogares individuales.",
   "Search sectors or facilities…": "Buscar sectores o servicios…",
   "Layers": "Capas",
   "Sector density & population": "Densidad y población por sector",

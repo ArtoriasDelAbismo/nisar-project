@@ -13,9 +13,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/sources")({
   head: () => ({
     meta: [
-      { title: "Data Sources & Transparency — Camp Sentinel" },
+      { title: "Data Sources & Transparency — NISAR project" },
       { name: "description", content: "Catalog of SAR, elevation, weather and humanitarian datasets with cadence, resolution and licensing." },
-      { property: "og:title", content: "Camp Sentinel Data Sources" },
+      { property: "og:title", content: "NISAR project Data Sources" },
       { property: "og:description", content: "SAR, elevation, weather and humanitarian datasets with cadence and licensing." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -82,7 +82,7 @@ function Sources() {
         ))}
       </div>
       <p className="mt-6 max-w-3xl text-xs text-muted-foreground">
-        {t("Data ethics: Camp Sentinel displays aggregated sector and cluster polygons only. It never renders pinpoint coordinates of individual shelters or households.")}
+        {t("Data ethics: NISAR project displays aggregated sector and cluster polygons only. It never renders pinpoint coordinates of individual shelters or households.")}
       </p>
     </div>
   );

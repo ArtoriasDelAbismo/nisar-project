@@ -14,9 +14,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/hazards")({
   head: () => ({
     meta: [
-      { title: "Hazards & Early Warning — Camp Sentinel" },
+      { title: "Hazards & Early Warning — NISAR project" },
       { name: "description", content: "Peril forecasts, transparent scoring formulas, sector risk ranking and recommended actions." },
-      { property: "og:title", content: "Camp Sentinel Hazard Engine" },
+      { property: "og:title", content: "NISAR project Hazard Engine" },
       { property: "og:description", content: "Peril forecasts, transparent scoring formulas and sector risk ranking." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

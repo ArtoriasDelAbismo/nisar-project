@@ -33,9 +33,9 @@ export const Route = createFileRoute("/map")({
   validateSearch: search,
   head: () => ({
     meta: [
-      { title: "Map Explorer — Camp Sentinel" },
+      { title: "Map Explorer — NISAR project" },
       { name: "description", content: "Geospatial workspace with SAR change detection, drainage, terrain and hazard layers." },
-      { property: "og:title", content: "Camp Sentinel Map Explorer" },
+      { property: "og:title", content: "NISAR project Map Explorer" },
       { property: "og:description", content: "Geospatial workspace with SAR change detection, drainage, terrain and hazard layers." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -13,9 +13,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/sites")({
   head: () => ({
     meta: [
-      { title: "Sites & Management — Camp Sentinel" },
+      { title: "Sites & Management — NISAR project" },
       { name: "description", content: "Sector breakdown, SAR structure monitoring changelog and facilities matrix." },
-      { property: "og:title", content: "Camp Sentinel Sites" },
+      { property: "og:title", content: "NISAR project Sites" },
       { property: "og:description", content: "Sector breakdown, SAR structure monitoring changelog and facilities matrix." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

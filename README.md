@@ -1,6 +1,6 @@
 # NISAR project
 
-Camp Sentinel es un prototipo de apoyo a decisiones para monitorear campamentos y sitios de personas desplazadas con imágenes de radar reales del satélite NISAR (NASA-ISRO). Cubre dos regiones: la franja costera de Gaza y la red de centros colectivos de Lviv, en Ucrania.
+NISAR project es un prototipo de apoyo a decisiones para monitorear campamentos y sitios de personas desplazadas con imágenes de radar reales del satélite NISAR (NASA-ISRO). Cubre dos regiones: la franja costera de Gaza y la red de centros colectivos de Lviv, en Ucrania.
 
 > Es un prototipo. No es un sistema oficial de alerta temprana ni de emergencias.
 

@@ -17,9 +17,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Overview — Camp Sentinel" },
+      { title: "Overview — NISAR project" },
       { name: "description", content: "Displacement KPIs, active hazard alerts and high-risk sectors at a glance." },
-      { property: "og:title", content: "Camp Sentinel Overview" },
+      { property: "og:title", content: "NISAR project Overview" },
       { property: "og:description", content: "Displacement KPIs, active hazard alerts and high-risk sectors at a glance." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

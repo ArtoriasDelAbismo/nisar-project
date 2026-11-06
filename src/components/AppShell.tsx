@@ -44,7 +44,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="flex h-12 items-center gap-4 border-b bg-sidebar px-4">
         <Link to="/" className="flex items-center gap-2">
           <Satellite className="size-5 text-primary" />
-          <span className="text-sm font-semibold tracking-wide">{t("CAMP SENTINEL")}</span>
+          <span className="text-sm font-semibold tracking-wide">{t("NISAR PROJECT")}</span>
         </Link>
         <SimBadge />
         <div className="ms-auto flex items-center gap-1 rounded-md border p-0.5">

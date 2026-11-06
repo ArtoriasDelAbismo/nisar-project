@@ -13,9 +13,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/alerts")({
   head: () => ({
     meta: [
-      { title: "Alert Management — Camp Sentinel" },
+      { title: "Alert Management — NISAR project" },
       { name: "description", content: "Configure peril thresholds and manage the alert lifecycle from new to resolved." },
-      { property: "og:title", content: "Camp Sentinel Alerts" },
+      { property: "og:title", content: "NISAR project Alerts" },
       { property: "og:description", content: "Configure peril thresholds and manage the alert lifecycle." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

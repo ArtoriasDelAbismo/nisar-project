@@ -77,9 +77,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Camp Sentinel — Humanitarian Hazard Decision Support" },
+      { title: "NISAR project — Humanitarian Hazard Decision Support" },
       { name: "description", content: "Climate hazard early-warning prototype combining SAR change detection, terrain and displacement data." },
-      { property: "og:title", content: "Camp Sentinel" },
+      { property: "og:title", content: "NISAR project" },
       { property: "og:description", content: "Humanitarian decision-support dashboard for displacement-site hazards." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -12,9 +12,9 @@ import { CHART, PageHeader, Panel, SimBadge } from "@/components/ui-kit";
 export const Route = createFileRoute("/demographics")({
   head: () => ({
     meta: [
-      { title: "Demographics & Displacement — Camp Sentinel" },
+      { title: "Demographics & Displacement — NISAR project" },
       { name: "description", content: "Displacement timeline, age and gender distribution, shelter typology and SAR vs registration discrepancy." },
-      { property: "og:title", content: "Camp Sentinel Demographics" },
+      { property: "og:title", content: "NISAR project Demographics" },
       { property: "og:description", content: "Displacement timeline, age and gender distribution, and SAR vs registration discrepancy." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

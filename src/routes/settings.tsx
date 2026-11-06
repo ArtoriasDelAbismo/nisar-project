@@ -12,9 +12,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings & Model Weights — Camp Sentinel" },
+      { title: "Settings & Model Weights — NISAR project" },
       { name: "description", content: "Calibrate hazard model weights live and set units, timezone and language." },
-      { property: "og:title", content: "Camp Sentinel Settings" },
+      { property: "og:title", content: "NISAR project Settings" },
       { property: "og:description", content: "Calibrate hazard model weights live and set units, timezone and language." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
