@@ -1,30 +1,82 @@
 import type * as GeoJSON from "geojson";
 import { rng, round } from "./prng";
-import type { RegionId } from "./regions";
+import { REGIONS, type RegionId } from "./regions";
 import { generateSectors } from "./sectors";
 import { generateFacilities } from "./facilities";
 import type { SectorScore } from "@/lib/scoring";
 
 type FC = GeoJSON.FeatureCollection;
 
+/** Hexagon center-to-corner distance in degrees of latitude. */
+const HEX_RADIUS: Record<RegionId, number> = { gaza: 0.0011, lviv: 0.0055 };
+
+function insidePolygon([x, y]: [number, number], polygon: [number, number][]) {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const [xi, yi] = polygon[i]!;
+    const [xj, yj] = polygon[j]!;
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+/** Pointy-top hexagon, widened in longitude so it stays regular on the map at this latitude. */
+function hexRing([cx, cy]: [number, number], radius: number, lonScale: number) {
+  const ring = Array.from({ length: 6 }, (_, i) => {
+    const angle = ((30 + i * 60) * Math.PI) / 180;
+    return [round(cx + radius * Math.cos(angle) * lonScale, 6), round(cy + radius * Math.sin(angle), 6)];
+  });
+  return [...ring, ring[0]!];
+}
+
+/**
+ * One shared hexagon grid over the region. Every cell in a sector carries that sector's values,
+ * because density is only known per sector, and each feature keeps the sector's id so that
+ * selecting a sector highlights all of its cells.
+ */
 export function sectorsGeo(region: RegionId, scores: SectorScore[]): FC {
   const byId = new Map(scores.map((s) => [s.sector.id, s.score]));
-  return {
-    type: "FeatureCollection",
-    features: generateSectors(region).map((s) => ({
-      type: "Feature",
-      id: Number(s.id.slice(3)),
-      properties: {
-        id: s.id,
-        name: s.name,
-        population: s.population,
-        density: s.density,
-        label: `${s.name}\n${(s.population / 1000).toFixed(1)}k`,
-        risk: byId.get(s.id) ?? 0,
-      },
-      geometry: { type: "Polygon", coordinates: [s.polygon] },
-    })),
-  };
+  const sectors = generateSectors(region);
+  const radius = HEX_RADIUS[region];
+  const lonScale = 1 / Math.cos((REGIONS[region].center[1] * Math.PI) / 180);
+  const stepX = Math.sqrt(3) * radius * lonScale;
+  const stepY = 1.5 * radius;
+  const maxDensity = Math.max(...sectors.map((s) => s.density));
+  const taken = new Set<string>();
+  const features: GeoJSON.Feature[] = [];
+
+  sectors.forEach((s) => {
+    const lons = s.polygon.map((p) => p[0]);
+    const lats = s.polygon.map((p) => p[1]);
+    const cells: [number, number][] = [];
+    for (let row = Math.floor(Math.min(...lats) / stepY); row * stepY <= Math.max(...lats); row++) {
+      const shift = row % 2 === 0 ? 0 : stepX / 2;
+      for (let col = Math.floor(Math.min(...lons) / stepX) - 1; col * stepX + shift <= Math.max(...lons); col++) {
+        const center: [number, number] = [col * stepX + shift, row * stepY];
+        const key = `${row}:${col}`;
+        if (taken.has(key) || !insidePolygon(center, s.polygon)) continue;
+        taken.add(key);
+        cells.push(center);
+      }
+    }
+    if (cells.length === 0) cells.push(s.centroid);
+    cells.forEach((center) => {
+      features.push({
+        type: "Feature",
+        id: Number(s.id.slice(3)),
+        properties: {
+          id: s.id,
+          name: s.name,
+          population: s.population,
+          density: s.density,
+          densityLevel: round(s.density / maxDensity, 3),
+          risk: byId.get(s.id) ?? 0,
+        },
+        geometry: { type: "Polygon", coordinates: [hexRing(center, radius, lonScale)] },
+      });
+    });
+  });
+  return { type: "FeatureCollection", features };
 }
 
 export function centroidsGeo(region: RegionId, scores: SectorScore[]): FC {
@@ -101,6 +153,30 @@ export function terrainGeo(region: RegionId): FC {
   const fc: FC = { type: "FeatureCollection", features: feats };
   terrainCache.set(region, fc);
   return fc;
+}
+
+/** One count per sector, such as 3/4 operational, for when the map is zoomed out. */
+export function facilitySummaryGeo(region: RegionId): FC {
+  const facilities = generateFacilities(region);
+  return {
+    type: "FeatureCollection",
+    features: generateSectors(region).flatMap((s) => {
+      const own = facilities.filter((f) => f.sectorId === s.id);
+      if (own.length === 0) return [];
+      const operational = own.filter((f) => f.status === "Operational").length;
+      const offline = own.some((f) => f.status === "Offline");
+      return [
+        {
+          type: "Feature" as const,
+          properties: {
+            label: `${operational}/${own.length}`,
+            status: offline ? "Offline" : operational === own.length ? "Operational" : "Degraded",
+          },
+          geometry: { type: "Point" as const, coordinates: s.centroid },
+        },
+      ];
+    }),
+  };
 }
 
 export function facilitiesGeo(region: RegionId): FC {

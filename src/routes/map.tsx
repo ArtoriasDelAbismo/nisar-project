@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, Columns2, Search, X } from "lucide-react";
 import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from "recharts";
 import { LazyMap } from "@/components/map/LazyMap";
 import { decodeLayers, encodeLayers, LAYER_KEYS, LAYER_LABELS, REAL_LAYERS, type LayerKey } from "@/components/map/layers";
+import { FACILITY_STATUS_COLORS } from "@/components/map/facilityIcons";
 import { useRegion } from "@/lib/useRegion";
 import { useNisar, useNisarAnalysis } from "@/lib/useNisar";
 import { changedShare, previousPassIndex, type NisarPass } from "@/lib/nisarAnalysis";
@@ -162,7 +163,7 @@ function MapExplorer() {
       </div>
 
       {/* layer panel */}
-      <aside className={cn("absolute start-3 top-3 z-20 w-72 rounded-md border bg-card/95 backdrop-blur transition-transform", !panel && "-translate-x-[calc(100%+1rem)]")}>
+      <aside className={cn("absolute start-3 top-3 z-20 max-h-[calc(100%-7.5rem)] w-72 overflow-y-auto rounded-md border bg-card/95 backdrop-blur transition-transform", !panel && "-translate-x-[calc(100%+1rem)]")}>
         <div className="flex items-center justify-between border-b px-3 py-2">
           <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t("Layers")}</span>
           <SimBadge />
@@ -279,7 +280,9 @@ function MapExplorer() {
 function Legend() {
   const { t, date, locale } = useI18n();
   const rows = [
+    ["Density", ["#134e4a", "#0f766e", "#14b8a6", "#5eead4"], ["Low", "", "", "High"]],
     ["Risk", ["#9a9a9a", "#e9a23b", "#d7263d", "#7b2cbf"], ["Low", "Warn", "Crit", "Extr"]],
+    ["Nodes", FACILITY_STATUS_COLORS, ["Operational", "Degraded", "Offline"]],
     ["Radar", ["#e66101", "#f4b183", "#9ecae1", "#2171b5"], ["Darker", "", "", "Brighter"]],
     ["Elev", ["#e8e8e8", "#b0b0b0", "#7a7a7a", "#4a4a4a", "#1c1c1c"], ["Low", "", "", "", "High"]],
   ] as const;
@@ -288,10 +291,10 @@ function Legend() {
       {rows.map(([k, cols, labels]) => (
         <div key={k}>
           <div className="flex items-center gap-2">
-            <span className="w-9">{t(k)}</span>
+            <span className="w-12">{t(k)}</span>
             <div className="flex flex-1 overflow-hidden rounded-sm">{cols.map((c) => <span key={c} className="h-2 flex-1" style={{ background: c }} />)}</div>
           </div>
-          <div className="ms-11 flex justify-between">{labels.filter(Boolean).map((l) => <span key={l}>{t(l)}</span>)}</div>
+          <div className="ms-14 flex justify-between">{labels.filter(Boolean).map((l) => <span key={l}>{t(l)}</span>)}</div>
         </div>
       ))}
     </div>

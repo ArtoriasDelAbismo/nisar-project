@@ -49,6 +49,8 @@ export const SPANISH: Record<string, string> = {
   "critical": "críticas",
   "Telemetry freshness": "Actualización de datos",
   "SAR pass": "Pasada SAR",
+  "Density": "Densidad",
+  "Nodes": "Nodos",
   "L-band SAR": "SAR en banda L",
   "NISAR radar change": "Cambio de radar NISAR",
   "NISAR wide-area quick look": "Vista rápida amplia NISAR",

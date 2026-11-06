@@ -9,12 +9,14 @@ import {
   centroidsGeo,
   drainageGeo,
   facilitiesGeo,
+  facilitySummaryGeo,
   sectorsGeo,
   terrainGeo,
 } from "@/data/generators/layers";
 import type { NisarImage } from "@/lib/nisar";
 import type { MapImage } from "@/lib/nisarAnalysis";
 import type { SectorScore } from "@/lib/scoring";
+import { addFacilityIcons, FACILITY_STATUS_COLORS } from "./facilityIcons";
 import { LAYER_KEYS, type LayerKey, type LayerState } from "./layers";
 
 export const BASEMAPS = {
@@ -24,7 +26,13 @@ export const BASEMAPS = {
 
 // Colorblind-safe ramps (literal colors are required by the GL paint spec).
 const RISK_RAMP = ["interpolate", ["linear"], ["get", "risk"], 0, "#9a9a9a", 40, "#9a9a9a", 55, "#e9a23b", 72, "#d7263d", 86, "#7b2cbf"];
-const DENSITY_RAMP = ["interpolate", ["linear"], ["get", "density"], 0, "#141414", 20000, "#2e2e2e", 60000, "#555555", 100000, "#8a8a8a", 160000, "#d9d9d9"];
+// Relative to the region's densest sector, because Gaza and Lviv differ by about 100x.
+const DENSITY_RAMP = ["interpolate", ["linear"], ["get", "densityLevel"], 0, "#134e4a", 0.4, "#0f766e", 0.7, "#14b8a6", 1, "#5eead4"];
+const STATUS_COLOR = ["match", ["get", "status"], "Operational", FACILITY_STATUS_COLORS[0]!, "Degraded", FACILITY_STATUS_COLORS[1]!, FACILITY_STATUS_COLORS[2]!];
+/** Keeps the counts beside each sector's hexagons instead of on top of them. */
+const BADGE_OFFSET: [number, number] = [16, -16];
+/** From this zoom, sector names and individual facility icons replace the per-sector counts. */
+const DETAIL_ZOOM: Record<RegionId, number> = { gaza: 12.5, lviv: 9.5 };
 const ELEV_RAMP = (region: RegionId) =>
   region === "gaza"
     ? ["interpolate", ["linear"], ["get", "elev"], 0, "#e8e8e8", 12, "#b0b0b0", 25, "#7a7a7a", 38, "#4a4a4a", 50, "#1c1c1c"]
@@ -47,13 +55,13 @@ interface Props {
   mapRef?: React.MutableRefObject<maplibregl.Map | null> | undefined;
 }
 
-/** Image layers bottom to top: wide context, then detail, then change. All sit under sector outlines. */
+/** Image layers bottom to top: wide context, then detail, then change. All sit under the sector grid. */
 const IMAGE_LAYERS = ["nisar-raster", "radar-raster", "sar-change"];
 
 function addImageLayer(map: maplibregl.Map, id: string, source: string) {
   if (map.getLayer(id)) return;
   const above = IMAGE_LAYERS.slice(IMAGE_LAYERS.indexOf(id) + 1).find((l) => map.getLayer(l));
-  map.addLayer({ id, type: "raster", source, paint: { "raster-fade-duration": 0 } }, above ?? "sectors-line");
+  map.addLayer({ id, type: "raster", source, paint: { "raster-fade-duration": 0 } }, above ?? "sectors-fill");
 }
 
 function removeImage(map: maplibregl.Map, id: string, source: string) {
@@ -94,38 +102,47 @@ function install(map: maplibregl.Map, p: Props) {
   add("centroids", centroidsGeo(region, scores));
   add("drainage", drainageGeo(region));
   add("facilities", facilitiesGeo(region));
+  add("facility-summary", facilitySummaryGeo(region));
+  addFacilityIcons(map);
 
   const L = (spec: maplibregl.LayerSpecification) => {
     if (!map.getLayer(spec.id)) map.addLayer(spec);
   };
   L({ id: "terrain-fill", type: "fill", source: "terrain", paint: { "fill-color": ELEV_RAMP(region) as never, "fill-opacity": 0.5 } });
-  L({ id: "sectors-fill", type: "fill", source: "sectors", paint: { "fill-color": DENSITY_RAMP as never, "fill-opacity": 0.55 } });
-  L({ id: "sectors-line", type: "line", source: "sectors", paint: { "line-color": "#94a3b8", "line-width": ["case", ["boolean", ["feature-state", "selected"], false], 3, 1] as never } });
+  L({ id: "sectors-fill", type: "fill", source: "sectors", paint: { "fill-color": DENSITY_RAMP as never, "fill-opacity": 0.5 } });
   L({ id: "drainage-line", type: "line", source: "drainage", layout: { "line-cap": "round" }, paint: { "line-color": "#9a9a9a", "line-width": region === "gaza" ? 14 : 10, "line-opacity": 0.35, "line-blur": 4 } });
   L({ id: "hazard-heat", type: "heatmap", source: "centroids", paint: { "heatmap-weight": ["/", ["get", "risk"], 100] as never, "heatmap-radius": region === "gaza" ? 60 : 45, "heatmap-intensity": 1.2, "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(0,0,0,0)", 0.2, "#9a9a9a", 0.45, "#e9a23b", 0.7, "#d7263d", 1, "#7b2cbf"] as never, "heatmap-opacity": 0.6 } });
-  L({ id: "risk-outline", type: "line", source: "sectors", paint: { "line-color": RISK_RAMP as never, "line-width": 2.5 } });
-  L({ id: "facilities-pt", type: "circle", source: "facilities", paint: { "circle-radius": 4.5, "circle-stroke-width": 1.2, "circle-stroke-color": "#000000", "circle-color": ["match", ["get", "type"], "medical", "#f472b6", "water", "#38bdf8", "heating", "#fb923c", "food", "#a3e635", "cooling", "#67e8f9", "#e2e8f0"] as never } });
+  L({ id: "risk-outline", type: "line", source: "sectors", paint: { "line-color": RISK_RAMP as never, "line-width": ["case", ["boolean", ["feature-state", "selected"], false], 2.5, 0.8] as never } });
+  L({ id: "facilities-pt", type: "symbol", source: "facilities", layout: { "icon-image": ["concat", "facility-", ["get", "type"], "-", ["get", "status"]] as never, "icon-allow-overlap": true } });
+  L({ id: "facilities-badge", type: "circle", source: "facility-summary", paint: { "circle-radius": 10, "circle-translate": BADGE_OFFSET, "circle-color": "#0a0a0a", "circle-stroke-width": 1.5, "circle-stroke-color": STATUS_COLOR as never } });
+  L({ id: "facilities-count", type: "symbol", source: "facility-summary", layout: { "text-field": ["get", "label"], "text-size": 9, "text-font": ["Open Sans Regular"] as never, "text-allow-overlap": true }, paint: { "text-color": "#f5f5f5", "text-translate": BADGE_OFFSET } });
   L({ id: "sector-labels", type: "symbol", source: "centroids", layout: { "text-field": ["get", "label"], "text-size": 10, "text-font": ["Open Sans Regular"] as never, "text-allow-overlap": false }, paint: { "text-color": "#e2e8f0", "text-halo-color": "#020617", "text-halo-width": 1.2 } });
+  map.setLayerZoomRange("sector-labels", DETAIL_ZOOM[region], 24);
+  map.setLayerZoomRange("facilities-pt", DETAIL_ZOOM[region], 24);
+  map.setLayerZoomRange("facilities-badge", 0, DETAIL_ZOOM[region]);
+  map.setLayerZoomRange("facilities-count", 0, DETAIL_ZOOM[region]);
   syncImages(map, p);
   applyVisibility(map, p.layers);
 }
 
 const LAYER_IDS: Record<LayerKey, string[]> = {
-  sectors: ["sectors-fill", "sectors-line", "sector-labels", "risk-outline"],
+  sectors: ["sectors-fill", "sector-labels", "risk-outline"],
   sar: ["sar-change"],
   drainage: ["drainage-line"],
   terrain: ["terrain-fill"],
-  facilities: ["facilities-pt"],
+  facilities: ["facilities-pt", "facilities-badge", "facilities-count"],
   hazard: ["hazard-heat"],
   nisar: ["nisar-raster"],
   radar: ["radar-raster"],
 };
 const OPACITY_PROP: Record<string, [string, number]> = {
-  "sectors-fill": ["fill-opacity", 0.7],
+  "sectors-fill": ["fill-opacity", 0.5],
   "sar-change": ["raster-opacity", 1],
   "drainage-line": ["line-opacity", 0.5],
   "terrain-fill": ["fill-opacity", 0.7],
-  "facilities-pt": ["circle-opacity", 1],
+  "facilities-pt": ["icon-opacity", 1],
+  "facilities-badge": ["circle-opacity", 1],
+  "facilities-count": ["text-opacity", 1],
   "hazard-heat": ["heatmap-opacity", 0.85],
   "nisar-raster": ["raster-opacity", 1],
   "radar-raster": ["raster-opacity", 1],
@@ -186,6 +203,11 @@ export default function MapView(p: Props) {
         .setHTML(`<b>${f.properties["name"]}</b><br/>${f.properties["status"]}`)
         .addTo(m);
     });
+    m.on("click", "facilities-badge", (e) => {
+      m.flyTo({ center: e.lngLat, zoom: DETAIL_ZOOM[props.current.region] + 0.5 });
+    });
+    m.on("mouseenter", "facilities-badge", () => (m.getCanvas().style.cursor = "pointer"));
+    m.on("mouseleave", "facilities-badge", () => (m.getCanvas().style.cursor = ""));
     (m as unknown as { _sel: (n: number | null) => void })._sel = (n) => {
       if (selected != null) m.setFeatureState({ source: "sectors", id: selected }, { selected: false });
       selected = n;
@@ -218,7 +240,7 @@ export default function MapView(p: Props) {
   useEffect(() => {
     const m = map.current;
     // Not isStyleLoaded(): it stays false while tiles load. style.load's install covers a pending style.
-    if (!m?.getLayer("sectors-line")) return;
+    if (!m?.getLayer("sectors-fill")) return;
     syncImages(m, p);
     applyVisibility(m, props.current.layers);
   }, [p.nisar, p.radar, p.change]);
