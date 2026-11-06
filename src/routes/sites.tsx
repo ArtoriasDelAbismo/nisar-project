@@ -38,7 +38,7 @@ function Sites() {
 
   const exportCsv = () =>
     downloadCsv(
-      `camp-sentinel-${meta.id}-sectors.csv`,
+      `nisar-project-${meta.id}-sectors.csv`,
       scores.map((s) => ({
         id: s.sector.id,
         name: s.sector.name,

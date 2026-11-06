@@ -15,7 +15,7 @@
     "nisar:sectors": "tsx pipeline/export_sectors.ts"
   },
   "overrides": {
-    "rollup": "1.2.1"
+    "rolldown": "1.2.1"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
